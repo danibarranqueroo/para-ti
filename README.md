@@ -47,6 +47,48 @@ Abre en el iPhone `http://192.168.1.42:8000` (con tu IP).
 El script las convierte a JPG, las reduce de tamaño y **les borra la ubicación GPS**
 (las fotos del iPhone llevan dentro dónde se hicieron, y el repositorio es público).
 
+## La pantalla de entrada (el corazón)
+
+Al abrir el enlace no ve la historia: ve su nombre, un corazón latiendo y
+"toca el corazón". Al tocarlo, una barra de carga **le toma el pelo** antes de
+dejarla pasar. Los mensajes se cambian en `js/content.js`, en `entrada.mensajes`:
+
+```js
+{ hasta: 62,  texto: "cargando…" },
+{ hasta: 41,  texto: "Otra vez" },        // ← la barra RETROCEDE, esa es la broma
+{ hasta: 78,  texto: "Un poquito más" },
+{ hasta: 100, texto: "¡La última vez!" }
+```
+
+`hasta` es a qué porcentaje llega la barra. Puedes poner los que quieras.
+
+## El sobre
+
+El capítulo de tipo `sobre` sale cerrado, con un lacre rojo. Ella lo toca, la
+solapa se abre y la carta sale deslizándose. En `js/content.js` controlas lo que
+pone el lacre (`sello`), los párrafos y la frase destacada del final (`cierre`).
+
+## Cambiar el estilo
+
+Una palabra en `js/content.js`:
+
+```js
+tema: "noche",   // fondo oscuro, cinematográfico
+tema: "papel",   // fondo crema tipo carta
+```
+
+## La tarjeta con el QR
+
+Abre `tarjeta.html` en el navegador y dale a **Cmd + P**: sale una tarjeta A6
+lista para recortar, con el QR que lleva a la web. Para regenerar el QR (por
+ejemplo si cambias la URL):
+
+```sh
+swift tools/generar-qr.swift "https://tu-url/" img/qr.png
+```
+
+Se genera en tu Mac con Core Image: la URL no sale a ningún servicio externo.
+
 ## Añadir música
 
 1. Guarda la canción en `audio/` (`.m4a` o `.mp3`).
@@ -75,12 +117,13 @@ En menos de un minuto está actualizado en la URL pública.
 | `index.html` | Esqueleto. Casi nunca hay que tocarlo. |
 | `css/styles.css` | Colores, tipografías, animaciones. |
 | `js/main.js` | El motor que pinta los capítulos. |
-| `tools/` | Script de fotos. |
+| `tarjeta.html` | La tarjeta con el QR, para imprimir. |
+| `tools/` | Scripts de fotos y de QR. |
 
 ### Tipos de capítulo disponibles
 
 `portada` · `texto` · `foto` · `fotos` (mosaico) · `cita` · `contador` ·
-`lista` · `carta` · `final`
+`lista` · `carta` (texto normal) · `sobre` (la que se abre) · `final`
 
 Se pueden repetir y reordenar libremente: el orden del archivo es el orden en
 que ella los verá.

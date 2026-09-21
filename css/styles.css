@@ -436,3 +436,267 @@ img { max-width: 100%; display: block; }
   .chapter__inner { max-width: 620px; }
   .mosaic { gap: 14px; }
 }
+
+/* =========================================================================
+   17. Tema "papel" — la alternativa clara, tipo carta antigua.
+   Se activa poniendo  tema: "papel"  en js/content.js
+   ========================================================================= */
+:root[data-tema="papel"] {
+  --bg:        #F7F0E4;
+  --bg-2:      #EFE4D2;
+  --text:      #4A3B32;
+  --text-soft: rgba(74, 59, 50, .88);
+  --muted:     rgba(74, 59, 50, .55);
+  --accent:    #C0663A;
+  --accent-dim:rgba(192, 102, 58, .30);
+  --line:      rgba(74, 59, 50, .16);
+}
+:root[data-tema="papel"] .chapter::before {
+  background: radial-gradient(60% 45% at 20% 25%, rgba(192, 102, 58, .08), transparent 70%);
+}
+:root[data-tema="papel"] .chapter:nth-child(even)::before {
+  background: radial-gradient(55% 45% at 82% 70%, rgba(150, 120, 90, .09), transparent 70%);
+}
+:root[data-tema="papel"] .cover::after {
+  background: linear-gradient(180deg,
+              rgba(247,240,228,.45) 0%, rgba(247,240,228,.2) 35%, rgba(247,240,228,.92) 100%);
+}
+:root[data-tema="papel"] .photo__frame {
+  background: linear-gradient(145deg, #E6DAC6, #DCCDB4);
+  box-shadow: 0 20px 44px -26px rgba(74, 59, 50, .55);
+}
+:root[data-tema="papel"] .photo__frame::after { box-shadow: none; }
+:root[data-tema="papel"] .music-toggle { background: rgba(247, 240, 228, .72); }
+:root[data-tema="papel"] .gate { background: var(--bg); }
+:root[data-tema="papel"] .counter__cell { background: rgba(74, 59, 50, .03); }
+
+/* =========================================================================
+   18. Pantalla de entrada (el corazón)
+   ========================================================================= */
+body.is-locked { overflow: hidden; height: 100svh; }
+body.is-locked #historia,
+body.is-locked .progress,
+body.is-locked .music-toggle { visibility: hidden; }
+
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  padding: var(--pad-x);
+  padding-bottom: calc(var(--pad-x) + var(--safe-b));
+  background: var(--bg);
+  text-align: center;
+  transition: opacity .8s var(--ease), visibility .8s var(--ease);
+}
+.gate.is-gone { opacity: 0; visibility: hidden; }
+
+.gate__name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 8vw, 2.6rem);
+  color: var(--accent);
+  margin: 0;
+}
+.gate__msg {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 0 0 1.6rem;
+  min-height: 1.6em;          /* el texto cambia: que no salte el layout */
+}
+
+.gate__heart {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 1rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.gate__heart svg {
+  width: 52px;
+  height: auto;
+  fill: var(--accent);
+  display: block;
+  transition: transform .25s var(--ease);
+}
+.gate__heart:active svg { transform: scale(.88); }
+@media not (prefers-reduced-motion: reduce) {
+  .gate__heart svg { animation: latido 1.9s ease-in-out infinite; }
+  @keyframes latido {
+    0%, 100%  { transform: scale(1); }
+    14%       { transform: scale(1.16); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.09); }
+    56%       { transform: scale(1); }
+  }
+  /* Cuando ya lo ha tocado, deja de latir y se aparta */
+  .gate.is-loading .gate__heart svg { animation-duration: .8s; }
+}
+.gate.is-loading .gate__heart { pointer-events: none; }
+
+.gate__bar {
+  width: min(230px, 62vw);
+  height: 5px;
+  border-radius: 99px;
+  background: var(--line);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .4s var(--ease);
+}
+.gate.is-loading .gate__bar { opacity: 1; }
+.gate__bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent));
+  transition: width .35s var(--ease);
+}
+
+.gate__hint {
+  margin: 1.4rem 0 0;
+  font-size: .72rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: opacity .4s var(--ease);
+}
+.gate.is-loading .gate__hint { opacity: 0; }
+
+/* =========================================================================
+   19. El sobre con la carta dentro
+   ========================================================================= */
+.sobre { margin-top: 1.5rem; }
+
+.sobre__cuerpo {
+  position: relative;
+  perspective: 1100px;
+}
+
+/* La carta: cerrada asoma un poco, abierta crece hasta mostrarse entera.
+   El truco de grid 0fr→1fr permite animar una altura desconocida. */
+.sobre__carta {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .9s var(--ease), transform .9s var(--ease);
+  transform: translateY(26px);
+  position: relative;
+  z-index: 1;
+}
+.sobre.is-open .sobre__carta {
+  grid-template-rows: 1fr;
+  transform: translateY(0);
+}
+.sobre__papel {
+  overflow: hidden;
+  background: linear-gradient(170deg, #FBF3DF 0%, #F3E6C8 100%);
+  color: #4A3B32;
+  border-radius: 4px 4px 2px 2px;
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .75);
+}
+.sobre__texto { padding: clamp(1.5rem, 6vw, 2.25rem); }
+.sobre__texto p {
+  font-family: var(--serif);
+  font-size: 1.06rem;
+  line-height: 1.85;
+  margin: 0 0 1.1rem;
+  color: #4A3B32;
+}
+.sobre__texto p:last-child { margin-bottom: 0; }
+.sobre__cierre {
+  margin-top: 1.6rem !important;
+  padding-top: 1.3rem;
+  border-top: 1px solid rgba(74, 59, 50, .18);
+  font-style: italic;
+  color: #A8622B !important;
+}
+
+/* La bolsa del sobre, por delante de la carta */
+.sobre__bolsa {
+  position: relative;
+  z-index: 2;
+  height: 86px;
+  margin-top: -14px;
+  background: linear-gradient(170deg, #E8D9BC, #D9C6A2);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 16px 30px -18px rgba(0, 0, 0, .6);
+}
+.sobre__bolsa::before,
+.sobre__bolsa::after {      /* los dos dobleces en diagonal */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,.06) 49.6%, transparent 50%);
+}
+.sobre__bolsa::after { background: linear-gradient(225deg, rgba(0,0,0,.06) 49.6%, transparent 50%); }
+
+/* La solapa de arriba, que se abre hacia atrás */
+.sobre__solapa {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 78px;
+  z-index: 3;
+  background: linear-gradient(175deg, #EFE2C8, #E0CDA9);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform .8s var(--ease), z-index 0s .4s;
+  backface-visibility: hidden;
+}
+.sobre.is-open .sobre__solapa {
+  transform: rotateX(-172deg);
+  z-index: 0;
+}
+
+/* El lacre rojo que hay que tocar */
+.sobre__sello {
+  position: absolute;
+  top: 52px; left: 50%;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  width: 76px; height: 76px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 30%, #C4453F, #8E2823 70%);
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, .6), inset 0 -2px 6px rgba(0,0,0,.35);
+  color: #F7E4D8;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: .92rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .5s var(--ease), opacity .4s var(--ease);
+}
+.sobre__sello:active { transform: translate(-50%, -50%) scale(.92); }
+.sobre.is-open .sobre__sello {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.6);
+  pointer-events: none;
+}
+
+.sobre__pista {
+  margin: 1.1rem 0 0;
+  text-align: center;
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: opacity .4s var(--ease);
+}
+.sobre.is-open .sobre__pista { opacity: 0; }
+
+/* Cuando el sistema pide menos movimiento: el sobre se abre sin acrobacias */
+@media (prefers-reduced-motion: reduce) {
+  .sobre__carta, .sobre__solapa, .sobre__sello { transition: none; }
+  .gate { transition: none; }
+}

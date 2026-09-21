@@ -28,7 +28,21 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&family=Caveat:wght@400;600&display=swap"></noscript>
 <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="is-locked">
+
+<!-- Pantalla de entrada: hasta que no toque el corazón, no se ve nada.
+     También es el gesto que permite arrancar la música en iPhone. -->
+<div class="gate" id="gate">
+  <p class="gate__name" id="gateName"></p>
+  <p class="gate__msg" id="gateMsg"></p>
+  <button class="gate__heart" id="gateHeart" type="button" aria-label="Entrar">
+    <svg viewBox="0 0 32 29" aria-hidden="true" focusable="false">
+      <path d="M16 29S0 19.3 0 9.2A9.2 9.2 0 0 1 16 3a9.2 9.2 0 0 1 16 6.2C32 19.3 16 29 16 29z"/>
+    </svg>
+  </button>
+  <div class="gate__bar" id="gateBar" aria-hidden="true"><span></span></div>
+  <p class="gate__hint" id="gateHint"></p>
+</div>
 
 <div class="progress" id="progress" aria-hidden="true"><span></span></div>
 
@@ -42,6 +56,8 @@
 <audio id="audio" loop preload="none" playsinline></audio>
 
 <noscript>
+  <style>.gate { display: none !important; } body.is-locked { overflow: auto; }
+         body.is-locked #historia { visibility: visible; }</style>
   <div class="noscript">
     <p>Necesitas activar JavaScript para ver esta página.</p>
   </div>

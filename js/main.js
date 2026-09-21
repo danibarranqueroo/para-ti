@@ -181,6 +181,46 @@
       return s;
     },
 
+    sobre: function (c) {
+      var s = section("sobre-chapter");
+      var inner = s.querySelector(".chapter__inner");
+      if (c.kicker) inner.appendChild(el('<p class="kicker" data-reveal>' + txt(c.kicker) + "</p>"));
+      if (c.titulo) inner.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
+
+      var sobre = el('<div class="sobre" data-reveal></div>');
+      var cuerpo = el('<div class="sobre__cuerpo"></div>');
+
+      var carta = el('<div class="sobre__carta"><div class="sobre__papel"><div class="sobre__texto"></div></div></div>');
+      var texto = carta.querySelector(".sobre__texto");
+      (c.parrafos || []).forEach(function (par) {
+        texto.appendChild(el("<p>" + txt(par) + "</p>"));
+      });
+      if (c.cierre) texto.appendChild(el('<p class="sobre__cierre">' + txt(c.cierre) + "</p>"));
+
+      cuerpo.appendChild(carta);
+      cuerpo.appendChild(el('<div class="sobre__bolsa"></div>'));
+      cuerpo.appendChild(el('<div class="sobre__solapa"></div>'));
+
+      var sello = el(
+        '<button class="sobre__sello" type="button" aria-expanded="false">' +
+          txt(c.sello || "Ábreme") +
+        "</button>"
+      );
+      cuerpo.appendChild(sello);
+      sobre.appendChild(cuerpo);
+
+      var pista = el('<p class="sobre__pista">toca el lacre</p>');
+      sobre.appendChild(pista);
+
+      sello.addEventListener("click", function () {
+        sobre.classList.add("is-open");
+        sello.setAttribute("aria-expanded", "true");
+      });
+
+      inner.appendChild(sobre);
+      return s;
+    },
+
     final: function (c) {
       var s = section("final");
       s.id = "final";
@@ -201,6 +241,7 @@
   }
 
   document.title = "Para " + (HISTORIA.apodo || HISTORIA.nombre || "ti");
+  document.documentElement.setAttribute("data-tema", HISTORIA.tema || "noche");
 
   HISTORIA.capitulos.forEach(function (c) {
     var build = BLOQUES[c.tipo];
@@ -276,8 +317,9 @@
 
   /* ---------- Música (opcional) ---------- */
 
-  var audio  = document.getElementById("audio");
-  var btn    = document.getElementById("musicToggle");
+  var audio = document.getElementById("audio");
+  var btn   = document.getElementById("musicToggle");
+  var arrancarMusica = null;        // lo usará también el corazón de la entrada
 
   if (HISTORIA.musica) {
     audio.src = HISTORIA.musica;
@@ -288,7 +330,7 @@
     audio.addEventListener("error", function () { btn.hidden = true; });
 
     var fade = null;
-    function fadeTo(target, done) {
+    var fadeTo = function (target, done) {
       clearInterval(fade);
       fade = setInterval(function () {
         var diff = target - audio.volume;
@@ -300,23 +342,70 @@
         }
         audio.volume = Math.min(1, Math.max(0, audio.volume + diff * 0.15));
       }, 40);
-    }
+    };
+
+    // iOS solo permite arrancar el sonido dentro de un gesto del usuario:
+    // por eso esto siempre se llama desde un click, nunca solo.
+    arrancarMusica = function () {
+      if (!audio.paused) return;
+      audio.volume = 0;
+      var p = audio.play();
+      if (p && p.catch) p.catch(function () { btn.hidden = true; });
+      btn.setAttribute("aria-pressed", "true");
+      btn.setAttribute("aria-label", "Silenciar música");
+      fadeTo(0.55);
+    };
 
     btn.addEventListener("click", function () {
       if (audio.paused) {
-        audio.volume = 0;
-        // iOS solo permite arrancar el sonido dentro de un gesto del usuario:
-        // por eso esto vive aquí dentro, en el click.
-        var p = audio.play();
-        if (p && p.catch) p.catch(function () { btn.hidden = true; });
-        btn.setAttribute("aria-pressed", "true");
-        btn.setAttribute("aria-label", "Silenciar música");
-        fadeTo(0.55);
+        arrancarMusica();
       } else {
         fadeTo(0, function () { audio.pause(); });
         btn.setAttribute("aria-pressed", "false");
         btn.setAttribute("aria-label", "Reproducir música");
       }
+    });
+  }
+
+  /* ---------- Pantalla de entrada: el corazón ---------- */
+
+  var gate = document.getElementById("gate");
+
+  if (gate) {
+    var cfg      = HISTORIA.entrada || {};
+    var mensajes = cfg.mensajes && cfg.mensajes.length
+                 ? cfg.mensajes
+                 : [{ hasta: 100, texto: "cargando…" }];
+
+    document.getElementById("gateName").textContent = HISTORIA.apodo || HISTORIA.nombre || "";
+    document.getElementById("gateHint").textContent = cfg.instruccion || "toca el corazón";
+
+    var gMsg   = document.getElementById("gateMsg");
+    var gBar   = document.querySelector("#gateBar span");
+    var gHeart = document.getElementById("gateHeart");
+
+    var abrir = function () {
+      gate.classList.add("is-gone");
+      document.body.classList.remove("is-locked");
+      window.scrollTo(0, 0);
+      setTimeout(function () { gate.remove(); }, 900);
+    };
+
+    var paso = function (i) {
+      if (i >= mensajes.length) {
+        setTimeout(abrir, 600);
+        return;
+      }
+      gMsg.textContent = mensajes[i].texto;
+      gBar.style.width = mensajes[i].hasta + "%";
+      setTimeout(function () { paso(i + 1); }, REDUCED ? 260 : 820);
+    };
+
+    gHeart.addEventListener("click", function () {
+      if (gate.classList.contains("is-loading")) return;
+      gate.classList.add("is-loading");
+      if (arrancarMusica) arrancarMusica();   // el gesto que iOS exige
+      paso(0);
     });
   }
 

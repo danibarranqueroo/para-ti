@@ -22,6 +22,23 @@ const HISTORIA = {
   // Cuándo empezasteis. Si recuerdas la hora, cámbiala (formato 24h).
   fechaInicio: "2021-02-08T00:00:00",
 
+  // Dos estilos disponibles. Cambia la palabra y ya está:
+  //   "noche" → fondo oscuro, cinematográfico (el de ahora)
+  //   "papel" → fondo crema tipo carta, como el vídeo que viste
+  tema: "noche",
+
+  // La pantalla de entrada: ella toca el corazón y la barra le toma el pelo
+  // antes de dejarla pasar. Cambia los mensajes por los que quieras.
+  entrada: {
+    instruccion: "toca el corazón",
+    mensajes: [
+      { hasta: 62,  texto: "cargando…" },
+      { hasta: 41,  texto: "Otra vez" },
+      { hasta: 78,  texto: "Un poquito más" },
+      { hasta: 100, texto: "¡La última vez!" }
+    ]
+  },
+
   // Canción de fondo. Deja "" (vacío) si no quieres música.
   // Si pones una, guarda el archivo en la carpeta audio/
   musica: "",
@@ -150,14 +167,16 @@ const HISTORIA = {
     },
 
     {
-      tipo: "carta",
+      tipo: "sobre",
       kicker: "Y por último",
-      titulo: "Lo que de verdad\nquería decirte",
+      titulo: "Te he escrito\nuna carta",
+      sello: "Ábreme",                    // lo que pone el lacre rojo
       parrafos: [
         "«Aquí la carta. Escríbela de una sentada, sin corregirte, como si se la estuvieras diciendo a la cara.»",
         "«Tres o cuatro párrafos van perfectos. Que se lea despacio.»",
         "«Y termina con lo más difícil de decir en persona.»"
-      ]
+      ],
+      cierre: "«Una última frase, la que más pese. Sale destacada al final.»"
     },
 
     {
