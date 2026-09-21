@@ -945,3 +945,214 @@ body.is-locked .music-toggle { visibility: hidden; }
 }
 :root[data-tema="papel"] .vale::before,
 :root[data-tema="papel"] .vale::after { background: var(--bg); }
+
+/* =========================================================================
+   25. La librería: cada libro es un regalo
+
+   Los lomos están en un estante. Al tocar uno se abre una capa con el
+   libro, que se parte por la mitad y enseña el regalo escrito dentro.
+   ========================================================================= */
+.libreria-chapter .chapter__inner { text-align: center; }
+.libreria { margin-top: 1.25rem; }
+
+.estante {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7px;
+  min-height: 190px;
+}
+
+.lomo {
+  position: relative;
+  width: 54px;
+  height: var(--h, 172px);
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 2px 5px 5px 2px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  /* Un poco de volumen: canto oscuro a los lados y lomo curvo */
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.42) 0%, rgba(0,0,0,.10) 14%,
+      rgba(255,255,255,.07) 45%,
+      rgba(0,0,0,.14) 82%, rgba(0,0,0,.40) 100%),
+    var(--c, #8E4A3C);
+  box-shadow: 0 12px 22px -12px rgba(0, 0, 0, .9);
+  transition: transform .35s var(--ease);
+}
+.lomo:active { transform: translateY(-7px); }
+
+/* Los filetes dorados de arriba y abajo */
+.lomo::before, .lomo::after {
+  content: "";
+  position: absolute;
+  left: 7px; right: 7px;
+  height: 1px;
+  background: rgba(255, 226, 190, .42);
+}
+.lomo::before { top: 13px; }
+.lomo::after  { bottom: 13px; }
+
+.lomo__titulo {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--serif);
+  font-size: .8rem;
+  letter-spacing: .03em;
+  color: rgba(255, 246, 236, .93);
+  white-space: nowrap;
+  overflow: hidden;
+  max-height: calc(100% - 38px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+}
+
+.estante__tabla {
+  height: 11px;
+  margin-top: -1px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #5C4837 0%, #3B2D23 60%, #2A2019 100%);
+  box-shadow: 0 14px 24px -14px rgba(0, 0, 0, .95);
+}
+
+.libreria__pista {
+  margin: 1.4rem 0 0;
+  font-size: .7rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* --- La capa donde se abre el libro --- */
+.tomo-capa {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 26px;
+  padding-bottom: calc(26px + var(--safe-b));
+  background: rgba(8, 6, 10, .93);
+  -webkit-backdrop-filter: blur(7px);
+          backdrop-filter: blur(7px);
+  opacity: 0;
+  transition: opacity .4s var(--ease);
+}
+.tomo-capa.is-visible { opacity: 1; }
+
+.tomo-capa__cerrar {
+  position: absolute;
+  top: calc(14px + var(--safe-t));
+  right: 16px;
+  width: 42px; height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(245, 237, 230, .08);
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tomo {
+  position: relative;
+  width: min(300px, 76vw);
+  aspect-ratio: 3 / 4;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+/* La página de dentro, con el regalo escrito */
+.tomo__interior {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  padding: 1.8rem 1.4rem;
+  text-align: center;
+  border-radius: 3px;
+  background: linear-gradient(170deg, #FCF4E2 0%, #F1E3C6 100%);
+  box-shadow: inset 0 0 44px rgba(120, 90, 50, .2);
+}
+/* La sombra del pliegue del centro */
+.tomo__interior::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: 28px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(92, 66, 36, .2), transparent);
+  pointer-events: none;
+}
+.tomo__que {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  line-height: 1.25;
+  color: #4A3B32;
+}
+.tomo__nota {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: #8A6B52;
+}
+
+/* Las dos tapas, que se abren hacia fuera */
+.tomo__tapa {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 50%;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.07), rgba(0,0,0,.18)),
+    var(--c, #8E4A3C);
+  /* Giran y se desvanecen: abiertas del todo ocuparían el doble de ancho
+     que la pantalla y se verían como dos barras de color a los lados. */
+  transition: transform .95s var(--ease), opacity .55s var(--ease) .4s;
+  backface-visibility: hidden;
+  box-shadow: 0 16px 34px -18px rgba(0, 0, 0, .9);
+}
+.tomo__tapa--izq {
+  left: 0;
+  transform-origin: left center;
+  border-radius: 4px 1px 1px 4px;
+}
+.tomo__tapa--der {
+  right: 0;
+  transform-origin: right center;
+  border-radius: 1px 4px 4px 1px;
+}
+/* El filete dorado del canto, como en el lomo */
+.tomo__tapa--izq::after, .tomo__tapa--der::after {
+  content: "";
+  position: absolute;
+  top: 18px; bottom: 18px;
+  width: 1px;
+  background: rgba(255, 226, 190, .35);
+}
+.tomo__tapa--izq::after { right: 14px; }
+.tomo__tapa--der::after { left: 14px; }
+
+.tomo.is-abierto .tomo__tapa--izq { transform: rotateY(-163deg); }
+.tomo.is-abierto .tomo__tapa--der { transform: rotateY(163deg); }
+.tomo.is-abierto .tomo__tapa { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tomo__tapa { transition: none; }
+  .tomo.is-abierto .tomo__tapa { opacity: 0; }
+  .lomo { transition: none; }
+}
+
+:root[data-tema="papel"] .estante__tabla {
+  background: linear-gradient(180deg, #8A6A4A 0%, #6B5138 60%, #513D2A 100%);
+}

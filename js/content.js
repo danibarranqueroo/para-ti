@@ -222,16 +222,18 @@ const HISTORIA = {
     },
 
     {
-      tipo: "regalos",
+      tipo: "libreria",
       kicker: "Ah, y una cosa más",
-      titulo: "Esto también\nes tuyo",
-      regalos: [
-        { que: "Una limpieza facial", nota: "cuando tú digas" },
-        { que: "Un libro" },
-        { que: "Un separador de libros", nota: "para que no dobles más las esquinas" },
-        { que: "Ropa", nota: "elegida por mí, asúmelo" }
-      ],
-      pie: "«MÍA: las notas en cursiva son mi cosecha. Cámbialas por las vuestras.»"
+      titulo: "Tu estantería",
+      instruccion: "toca un libro",
+      // El texto del lomo NO debe desvelar el regalo: es lo que ella ve
+      // antes de abrirlo. El regalo está en "que".
+      libros: [
+        { lomo: "Cuidarte",            que: "Una limpieza facial", nota: "cuando tú digas" },
+        { lomo: "Para leer",           que: "Un libro" },
+        { lomo: "No perder la página", que: "Un separador de libros" },
+        { lomo: "Para ponerte guapa",  que: "Ropa" }
+      ]
     },
 
     {

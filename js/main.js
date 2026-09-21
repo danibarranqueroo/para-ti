@@ -282,6 +282,94 @@
       return s;
     },
 
+    // Una estantería: cada libro es un regalo. Al tocarlo se abre por la mitad.
+    libreria: function (c) {
+      var s = section("libreria-chapter");
+      var inner = s.querySelector(".chapter__inner");
+      if (c.kicker) inner.appendChild(el('<p class="kicker" data-reveal>' + txt(c.kicker) + "</p>"));
+      if (c.titulo) inner.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
+
+      var COLORES = ["#8E4A3C", "#3F5B4C", "#2F4858", "#6B4A78", "#8A6B2F", "#7A3B4A"];
+      var ALTOS   = [176, 162, 184, 168, 179, 165];
+
+      var libreria = el('<div class="libreria" data-reveal></div>');
+      var estante  = el('<div class="estante"></div>');
+
+      // La capa donde se abre el libro. Va colgada del body para que nada
+      // de la página la recorte.
+      var capa = el(
+        '<div class="tomo-capa" role="dialog" aria-modal="true" aria-label="Regalo" hidden>' +
+          '<button class="tomo-capa__cerrar" type="button" aria-label="Cerrar">&times;</button>' +
+          '<div class="tomo">' +
+            '<div class="tomo__interior">' +
+              '<p class="tomo__que"></p>' +
+              '<p class="tomo__nota"></p>' +
+            "</div>" +
+            '<div class="tomo__tapa tomo__tapa--izq"></div>' +
+            '<div class="tomo__tapa tomo__tapa--der"></div>' +
+          "</div>" +
+        "</div>"
+      );
+      document.body.appendChild(capa);
+
+      var tomo   = capa.querySelector(".tomo");
+      var elQue  = capa.querySelector(".tomo__que");
+      var elNota = capa.querySelector(".tomo__nota");
+      var cerrar = capa.querySelector(".tomo-capa__cerrar");
+      var ultimo = null;
+
+      function abrir(libro, lomo) {
+        ultimo = lomo;
+        elQue.textContent  = libro.que || "";
+        elNota.textContent = libro.nota || "";
+        elNota.hidden = !libro.nota;
+        tomo.style.setProperty("--c", libro.color);
+        tomo.classList.remove("is-abierto");
+        capa.hidden = false;
+        // Un respiro para que se vea cerrado antes de abrirse
+        requestAnimationFrame(function () {
+          capa.classList.add("is-visible");
+          setTimeout(function () { tomo.classList.add("is-abierto"); }, REDUCED ? 0 : 220);
+        });
+        cerrar.focus();
+      }
+
+      function cerrarCapa() {
+        tomo.classList.remove("is-abierto");
+        capa.classList.remove("is-visible");
+        setTimeout(function () { capa.hidden = true; }, 420);
+        if (ultimo) ultimo.focus();
+      }
+
+      cerrar.addEventListener("click", cerrarCapa);
+      capa.addEventListener("click", function (e) {
+        if (e.target === capa) cerrarCapa();      // tocar fuera del libro
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !capa.hidden) cerrarCapa();
+      });
+
+      (c.libros || []).forEach(function (libro, i) {
+        libro.color = libro.color || COLORES[i % COLORES.length];
+        var lomo = el(
+          '<button class="lomo" type="button">' +
+            '<span class="lomo__titulo">' + txt(libro.lomo || (i + 1)) + "</span>" +
+          "</button>"
+        );
+        lomo.style.setProperty("--c", libro.color);
+        lomo.style.setProperty("--h", (libro.alto || ALTOS[i % ALTOS.length]) + "px");
+        lomo.addEventListener("click", function () { abrir(libro, lomo); });
+        estante.appendChild(lomo);
+      });
+
+      libreria.appendChild(estante);
+      libreria.appendChild(el('<div class="estante__tabla"></div>'));
+      libreria.appendChild(el('<p class="libreria__pista">' +
+                              txt(c.instruccion || "toca un libro") + "</p>"));
+      inner.appendChild(libreria);
+      return s;
+    },
+
     sobre: function (c) {
       var s = section("sobre-chapter");
       var inner = s.querySelector(".chapter__inner");

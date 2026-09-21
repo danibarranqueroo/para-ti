@@ -124,7 +124,23 @@ En menos de un minuto está actualizado en la URL pública.
 
 `portada` · `texto` · `foto` · `fotos` (mosaico) · `cita` · `contador` ·
 `lista` · `cielo` (mapa de estrellas) · `carta` (texto normal) ·
-`sobre` (la que se abre) · `final`
+`sobre` (la que se abre) · `libreria` (los regalos) · `final`
+
+### La librería
+
+Cada libro del estante es un regalo. Ella toca un lomo, el libro se abre por la
+mitad y dentro está escrito el regalo. En `content.js`:
+
+```js
+{ lomo: "No perder la página", que: "Un separador de libros" }
+```
+
+`lomo` es lo que se lee en el canto del libro **antes** de abrirlo: no debe
+desvelar el regalo. `que` es lo que aparece dentro. Puedes añadir `nota` para
+una línea en cursiva, y `color` si quieres elegir el color del libro.
+
+También existe el tipo `regalos`, que enseña lo mismo como vales de ticket, por
+si algún día prefieres esa versión.
 
 ### El capítulo del cielo
 
