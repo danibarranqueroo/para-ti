@@ -24,7 +24,7 @@ const HISTORIA = {
 
   // Su fecha de nacimiento. Pon el año y aparecerá un contador con los días
   // que lleva en el mundo. Si lo dejas así, ese capítulo no cuenta nada.
-  fechaNacimiento: "AAAA-09-26T00:00:00",
+  fechaNacimiento: "2001-09-26T00:00:00",
 
   // Dos estilos disponibles. Cambia la palabra y ya está:
   //   "noche" → fondo oscuro, cinematográfico (el de ahora)
@@ -94,7 +94,7 @@ const HISTORIA = {
       tipo: "contador",
       kicker: "Desde entonces",
       titulo: "Llevas en el mundo",
-      desde: "AAAA-09-26T00:00:00",   // pon su año de nacimiento aquí también
+      desde: "2001-09-26T00:00:00",
       pie: "y menos mal"
     },
 
