@@ -1,0 +1,86 @@
+# Para Andrea 🤍
+
+Web de cumpleaños. Se ve deslizando hacia abajo, pensada para iPhone.
+
+---
+
+## Lo único que tienes que saber
+
+**Todo el texto está en `js/content.js`.** Ábrelo con cualquier editor, cambia lo
+que hay entre comillas, guarda, y publica. Nada más.
+
+Los textos entre «corchetes angulares» son huecos para rellenar.
+
+---
+
+## Ver la web en tu ordenador
+
+```sh
+cd ~/Desktop/projects/lovewebpage
+python3 -m http.server 8000
+```
+
+Abre <http://localhost:8000>. Para parar el servidor: `Ctrl + C`.
+
+## Verla en tu iPhone antes de enviársela
+
+Con el servidor de arriba encendido y el móvil en la misma WiFi:
+
+```sh
+ipconfig getifaddr en0        # te da la IP de tu Mac, ej. 192.168.1.42
+```
+
+Abre en el iPhone `http://192.168.1.42:8000` (con tu IP).
+**Esta es la prueba que cuenta** — el simulador no vale.
+
+---
+
+## Añadir fotos
+
+1. Copia las fotos al Finder en `img/originales/` (da igual si son HEIC del iPhone).
+2. Ejecuta:
+   ```sh
+   bash tools/optimizar-fotos.sh
+   ```
+3. Te imprime los nombres ya listos. Cópialos en `js/content.js`.
+
+El script las convierte a JPG, las reduce de tamaño y **les borra la ubicación GPS**
+(las fotos del iPhone llevan dentro dónde se hicieron, y el repositorio es público).
+
+## Añadir música
+
+1. Guarda la canción en `audio/` (`.m4a` o `.mp3`).
+2. En `js/content.js`: `musica: "audio/cancion.m4a"`.
+
+Aparecerá un botón ♪ discreto abajo a la derecha. **No sonará sola**: iOS no lo
+permite hasta que ella toque el botón. Si nunca lo toca, la web funciona igual.
+
+---
+
+## Publicar los cambios
+
+```sh
+git add -A && git commit -m "actualizo contenido" && git push
+```
+
+En menos de un minuto está actualizado en la URL pública.
+
+---
+
+## Cómo está montado
+
+| Archivo | Qué es |
+|---|---|
+| `js/content.js` | **Todo el contenido.** Lo tuyo. |
+| `index.html` | Esqueleto. Casi nunca hay que tocarlo. |
+| `css/styles.css` | Colores, tipografías, animaciones. |
+| `js/main.js` | El motor que pinta los capítulos. |
+| `tools/` | Script de fotos. |
+
+### Tipos de capítulo disponibles
+
+`portada` · `texto` · `foto` · `fotos` (mosaico) · `cita` · `contador` ·
+`lista` · `carta` · `final`
+
+Se pueden repetir y reordenar libremente: el orden del archivo es el orden en
+que ella los verá.

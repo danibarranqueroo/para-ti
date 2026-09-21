@@ -1,0 +1,6 @@
+# Las fotos originales del iPhone no se publican: pesan mucho y llevan
+# metadatos de ubicación. Solo se sube lo que genera tools/optimizar-fotos.sh
+img/originales/*
+!img/originales/.gitkeep
+
+.DS_Store
