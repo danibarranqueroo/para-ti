@@ -51,7 +51,16 @@
     @page { size: A4; margin: 14mm; }
     body { background: #fff; padding: 0; display: block; }
     .aviso { display: none; }
-    .tarjeta { box-shadow: none; border: 1px dashed #C9BCA6; margin: 0 auto; }
+    .tarjeta {
+      box-shadow: none;
+      border: 1px dashed #C9BCA6;
+      margin: 0 auto;
+      /* Sin esto el navegador NO imprime el fondo crema ni el corazón:
+         saldría la tarjeta en blanco sobre blanco. */
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .corazon { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 </style>
 </head>
