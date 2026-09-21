@@ -140,7 +140,11 @@
     cita: function (c) {
       var s = section("quote");
       var inner = s.querySelector(".chapter__inner");
-      inner.appendChild(el('<hr class="rule" data-reveal>'));
+      if (c.inicial) {
+        inner.appendChild(el('<p class="inicial" data-reveal>' + txt(c.inicial) + "</p>"));
+      } else {
+        inner.appendChild(el('<hr class="rule" data-reveal>'));
+      }
       var bq = el('<blockquote class="quote__text" data-reveal>' + txt(c.texto) + "</blockquote>");
       if (c.autor) bq.appendChild(el('<cite class="quote__author">' + txt(c.autor) + "</cite>"));
       inner.appendChild(bq);
@@ -199,7 +203,7 @@
     },
 
     cielo: function (c) {
-      var s = section("cielo-chapter");
+      var s = section("cielo-chapter chapter--negro");
       var inner = s.querySelector(".chapter__inner");
       var cielo = el('<div class="cielo"></div>');
 
@@ -216,6 +220,65 @@
 
       if (c.pie) cielo.appendChild(el('<p class="cielo__pie" data-reveal>' + txt(c.pie) + "</p>"));
       inner.appendChild(cielo);
+      return s;
+    },
+
+    // Una captura de pantalla sobre negro (el pantallazo de Minecraft)
+    pantalla: function (c) {
+      var s = section("pantalla-chapter chapter--negro");
+      var inner = s.querySelector(".chapter__inner");
+      if (c.kicker) inner.appendChild(el('<p class="kicker" data-reveal>' + txt(c.kicker) + "</p>"));
+      if (c.titulo) inner.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
+      inner.appendChild(el(
+        '<img class="pantalla__img" src="' + txt(conVersion(c.src)) + '" alt="' +
+        txt(c.alt || "") + '" loading="lazy" decoding="async" data-reveal>'
+      ));
+      if (c.pie) inner.appendChild(el('<p class="pantalla__pie" data-reveal>' + txt(c.pie) + "</p>"));
+      return s;
+    },
+
+    // Marcos vacíos: las fotos que todavía no existen
+    futuro: function (c) {
+      var s = section("futuro-chapter");
+      var inner = s.querySelector(".chapter__inner");
+      if (c.kicker) inner.appendChild(el('<p class="kicker" data-reveal>' + txt(c.kicker) + "</p>"));
+      if (c.titulo) inner.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
+
+      var rejilla = el('<div class="futuro"></div>');
+      (c.momentos || []).forEach(function (m) {
+        var item = el('<figure class="futuro__item" data-reveal></figure>');
+        if (m.src) {
+          // El día que exista la foto, basta con ponerla aquí
+          var marco = el('<div class="futuro__marco futuro__marco--lleno"></div>');
+          marco.appendChild(el('<img src="' + txt(conVersion(m.src)) +
+                               '" alt="" loading="lazy" decoding="async">'));
+          item.appendChild(marco);
+        } else {
+          item.appendChild(el('<div class="futuro__marco"><span>?</span></div>'));
+        }
+        item.appendChild(el('<figcaption>' + txt(m.texto) + "</figcaption>"));
+        rejilla.appendChild(item);
+      });
+      inner.appendChild(rejilla);
+      if (c.pie) inner.appendChild(el('<p class="futuro__pie" data-reveal>' + txt(c.pie) + "</p>"));
+      return s;
+    },
+
+    // Los regalos, como vales
+    regalos: function (c) {
+      var s = section("regalos-chapter");
+      var inner = s.querySelector(".chapter__inner");
+      if (c.kicker) inner.appendChild(el('<p class="kicker" data-reveal>' + txt(c.kicker) + "</p>"));
+      if (c.titulo) inner.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
+
+      (c.regalos || []).forEach(function (r) {
+        var vale = el('<div class="vale" data-reveal></div>');
+        vale.appendChild(el('<span class="vale__sello">Vale por</span>'));
+        vale.appendChild(el('<p class="vale__que">' + txt(r.que) + "</p>"));
+        if (r.nota) vale.appendChild(el('<p class="vale__nota">' + txt(r.nota) + "</p>"));
+        inner.appendChild(vale);
+      });
+      if (c.pie) inner.appendChild(el('<p class="regalos__pie" data-reveal>' + txt(c.pie) + "</p>"));
       return s;
     },
 

@@ -48,7 +48,6 @@ const HISTORIA = {
 
     {
       tipo: "portada",
-      // Si pones aquí una foto vuestra, saldrá de fondo muy tenue.
       fondo: "img/portada.jpg",
       kicker: "26 de septiembre",
       titulo: "Feliz cumpleaños,\nMi Amorcito",
@@ -59,20 +58,18 @@ const HISTORIA = {
     {
       tipo: "texto",
       kicker: "Antes",
-      titulo: "Cómo era esto antes de ti",
+      titulo: "Cómo era esto\nantes de ti",
       cuerpo: [
-        "«Aquí una o dos frases sobre cómo era tu vida antes del 8 de febrero de 2021. No hace falta que sea triste, solo más pequeña.»",
-        "«Algo tipo: todo funcionaba, pero nada me hacía especial ilusión.»"
+        "«PENDIENTE: una o dos frases sobre cómo era tu vida antes del 8 de febrero de 2021. No hace falta que sea triste, solo más pequeña.»"
       ]
     },
 
     {
       tipo: "texto",
       kicker: "8 de febrero de 2021",
-      titulo: "El día que empezó todo",
+      titulo: "El día que\nempezó todo",
       cuerpo: [
-        "«Cuenta ese día con detalle: dónde estabais, qué hora era, qué llevaba puesto, qué dijo ella, qué pensaste tú.»",
-        "«Los detalles concretos son lo que emociona. \"Llevabas el jersey verde y no parabas de reírte\" vale más que \"fue un día precioso\".»"
+        "«PENDIENTE: ese día con detalle. Dónde estabais, qué hora era, qué llevaba puesto, qué dijo ella, qué pensaste tú.»"
       ]
     },
 
@@ -88,22 +85,26 @@ const HISTORIA = {
     {
       tipo: "foto",
       src: "img/01.jpg",
-      pie: "«Pie de foto: qué estabas pensando en ese momento.»"
+      pie: "«PENDIENTE: pie de foto.»"
     },
 
     {
-      tipo: "texto",
-      kicker: "Capítulo 3",
-      titulo: "La primera vez que\nsupe que eras tú",
-      cuerpo: [
-        "«El momento exacto en el que dejó de ser algo que empezaba y pasó a ser algo serio. Un gesto suyo, una conversación, un viaje.»"
+      tipo: "lista",
+      kicker: "Contigo, todo por primera vez",
+      titulo: "Fuiste mi primera vez\nen muchas cosas",
+      items: [
+        "Mi primera persona favorita",
+        "Mi primer «ya llegaste a casa»",
+        "Mi primer «¿cómo te fue en el trabajo?»",
+        "Mi primer «¿cómo está nuestra gatilla?»",
+        "Mi primera paz en medio del caos",
+        "Mi primer lugar seguro"
       ]
     },
 
     {
       tipo: "cita",
-      texto: "«Una frase vuestra. Algo que ella te dijo, o que le dices siempre.»",
-      autor: "Andrea"
+      texto: "Y la que me hizo sentir que el amor es paz, es tranquilidad, es hogar y es felicidad."
     },
 
     {
@@ -115,13 +116,18 @@ const HISTORIA = {
 
     {
       tipo: "lista",
-      kicker: "Nuestro mapa",
-      titulo: "Sitios donde hemos sido felices",
+      kicker: "Nueve sitios",
+      titulo: "Dónde hemos\nsido felices",
       items: [
-        { texto: "«Sitio»", nota: "«el año, o qué pasó allí»" },
-        { texto: "«Sitio»", nota: "«el año, o qué pasó allí»" },
-        { texto: "«Sitio»", nota: "«el año, o qué pasó allí»" },
-        { texto: "«Sitio»", nota: "«el año, o qué pasó allí»" }
+        "Portugal",
+        "Canarias",
+        "Ámsterdam",
+        "Madrid",
+        "Barcelona",
+        "Benidorm",
+        "Murcia",
+        "Almería",
+        "Irlanda"
       ]
     },
 
@@ -130,62 +136,102 @@ const HISTORIA = {
       kicker: "El álbum",
       titulo: "Trocitos",
       fotos: ["img/02.jpg", "img/03.jpg", "img/04.jpg", "img/05.jpg"],
-      pie: "«Una frase que resuma todas estas fotos juntas.»"
+      pie: "«PENDIENTE: una frase que resuma todas estas fotos juntas.»"
     },
 
     {
-      tipo: "lista",
+      tipo: "pantalla",
+      kicker: "03:14 de la madrugada",
+      titulo: "¿Por qué será que\nhoy no me puedo dormir?",
+      src: "img/minecraft.png",
+      alt: "Pantalla de Minecraft: esperando a que otros se vayan a dormir",
+      pie: "«MÍA, cámbiala si quieres: en Minecraft la noche no pasa hasta que todos se duermen. Resulta que en mi cama funciona igual.»"
+    },
+
+    {
+      tipo: "texto",
       kicker: "La verdad",
-      titulo: "Cosas que amo de ti",
-      items: [
-        "«Cómo te ríes cuando…»",
-        "«La cara que pones cuando…»",
-        "«Que siempre…»",
-        "«Lo bien que se te da…»",
-        "«Cómo me miras cuando…»",
-        "«Que nunca…»",
-        "«Lo valiente que fuiste cuando…»",
-        "«Que hagas que…»"
+      titulo: "Todos los errores,\ncontigo",
+      cuerpo: [
+        "No sé cuántas disculpas tendremos que pedir para llegar a viejos juntos.",
+        "Pero sí sé que quiero que todos los errores sean contigo. Aprender juntos. Y no tener que volver a amar a nadie más."
       ]
     },
 
     {
       tipo: "lista",
-      kicker: "Solo nuestro",
-      titulo: "Tonterías que nadie más entiende",
+      kicker: "Y aun así",
+      titulo: "Empezar\notra vez",
       items: [
-        "«Una frase interna vuestra»",
-        "«Un mote»",
-        "«Ese chiste que lleváis años repitiendo»"
+        "Empezar otra vez",
+        "Confiar otra vez",
+        "Soñar otra vez"
       ]
+    },
+
+    {
+      tipo: "texto",
+      cuerpo: [
+        "«MÍA, cámbiala si quieres: nadie te cuenta que lo difícil no es enamorarse. Es volver a hacerlo de la misma persona. Otra vez, y otra, y otra.»"
+      ]
+    },
+
+    {
+      tipo: "cita",
+      inicial: "A",
+      texto: "Te elegiría siempre a ti. En cada vida, en cien mundos, en cada versión de la realidad.\n\nPorque aunque lleve tu inicial tatuada, es en mi corazón donde estás tatuada tú. Y es ahí donde vas a quedarte para siempre.\n\nPorque te elegiría una y mil veces."
     },
 
     {
       tipo: "foto",
       src: "img/06.jpg",
-      pie: "«Otra foto, de las recientes.»"
+      pie: "«PENDIENTE: una foto de ahora, de las recientes.»"
     },
 
     {
       tipo: "texto",
-      kicker: "Lo que viene",
-      titulo: "Todo lo que\nnos queda",
-      cuerpo: [
-        "«Habla en futuro: los viajes, la casa, los planes, las tonterías que quieres vivir con ella. Esto es lo que hace que una web de cumpleaños no vaya solo de nostalgia.»"
-      ]
+      kicker: "Y a partir de aquí",
+      titulo: "Amarte hoy.\nAmarte mañana.\nAmarte toda una vida.",
+      cuerpo: []
+    },
+
+    {
+      tipo: "futuro",
+      kicker: "Lo que nos queda",
+      titulo: "Las fotos que\ntodavía no hemos hecho",
+      momentos: [
+        { texto: "La casa nueva" },
+        { texto: "El próximo viaje" },
+        { texto: "La boda" },
+        { texto: "Un bebé" },
+        { texto: "Nosotros, viejitos" }
+      ],
+      pie: "Estos marcos están vacíos a propósito. Los vamos a ir llenando."
     },
 
     {
       tipo: "sobre",
       kicker: "Y por último",
       titulo: "Te he escrito\nuna carta",
-      sello: "Ábreme",                    // lo que pone el lacre rojo
+      sello: "Ábreme",
       parrafos: [
-        "«Aquí la carta. Escríbela de una sentada, sin corregirte, como si se la estuvieras diciendo a la cara.»",
-        "«Tres o cuatro párrafos van perfectos. Que se lea despacio.»",
-        "«Y termina con lo más difícil de decir en persona.»"
+        "«PENDIENTE: la carta. Escríbela de una sentada, sin corregirte, como si se la estuvieras diciendo a la cara.»",
+        "«Tres o cuatro párrafos van perfectos. Que se lea despacio.»"
       ],
-      cierre: "«Una última frase, la que más pese. Sale destacada al final.»"
+      cierre: "«PENDIENTE: la última frase, la que más pese.»"
+    },
+
+    {
+      tipo: "regalos",
+      kicker: "Ah, y una cosa más",
+      titulo: "Esto también\nes tuyo",
+      regalos: [
+        { que: "Una limpieza facial", nota: "cuando tú digas" },
+        { que: "Un libro" },
+        { que: "Un separador de libros", nota: "para que no dobles más las esquinas" },
+        { que: "Ropa", nota: "elegida por mí, asúmelo" }
+      ],
+      pie: "«MÍA: las notas en cursiva son mi cosecha. Cámbialas por las vuestras.»"
     },
 
     {

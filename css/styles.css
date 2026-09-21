@@ -755,11 +755,11 @@ body.is-locked .music-toggle { visibility: hidden; }
    capítulo se funde a negro para que el disco no se recorte como un
    rectángulo. Sin marco: solo las estrellas flotando.
    ========================================================================= */
-.cielo-chapter {
+.chapter--negro {
   background: linear-gradient(180deg,
               transparent 0%, #000 13%, #000 87%, transparent 100%);
 }
-.cielo-chapter::before { display: none; }   /* fuera el resplandor cálido */
+.chapter--negro::before { display: none; }   /* fuera el resplandor cálido */
 
 .cielo { text-align: center; }
 .cielo .kicker { margin-bottom: 1rem; }
@@ -787,10 +787,161 @@ body.is-locked .music-toggle { visibility: hidden; }
 }
 
 /* En tema papel el mapa seguiría necesitando fondo oscuro para verse */
-:root[data-tema="papel"] .cielo-chapter {
+:root[data-tema="papel"] .chapter--negro {
   background: linear-gradient(180deg,
               transparent 0%, #12100F 14%, #12100F 86%, transparent 100%);
 }
 :root[data-tema="papel"] .cielo .title  { color: #F5EDE6; }
 :root[data-tema="papel"] .cielo .kicker { color: #E8B4A0; }
 :root[data-tema="papel"] .cielo__pie    { color: rgba(245, 237, 230, .6); }
+
+/* =========================================================================
+   21. La inicial tatuada (la cita del tatuaje)
+   ========================================================================= */
+.inicial {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(5rem, 24vw, 8rem);
+  line-height: .85;
+  color: var(--accent);
+  opacity: .30;
+  margin: 0 0 1.5rem;
+  user-select: none;
+}
+
+/* =========================================================================
+   22. Captura de pantalla sobre negro (el Minecraft)
+   ========================================================================= */
+.pantalla-chapter .chapter__inner { text-align: center; }
+.pantalla__img {
+  width: 100%;
+  height: auto;
+  margin: .5rem auto 0;
+  display: block;
+  /* Bordes difuminados: la captura no acaba en un corte seco */
+  -webkit-mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, #000 58%, transparent 100%);
+          mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, #000 58%, transparent 100%);
+}
+.pantalla__pie {
+  margin: 1.75rem auto 0;
+  max-width: 30ch;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* =========================================================================
+   23. Las fotos que todavía no existen
+   ========================================================================= */
+.futuro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 12px;
+  margin-top: .5rem;
+}
+.futuro__item { margin: 0; text-align: center; }
+
+.futuro__marco {
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--accent-dim);
+  border-radius: 8px;
+  background: rgba(232, 180, 160, .035);
+  overflow: hidden;
+}
+.futuro__marco span {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  color: var(--accent);
+  opacity: .35;
+}
+.futuro__marco--lleno { border-style: solid; border-color: transparent; }
+.futuro__marco--lleno img { width: 100%; height: 100%; object-fit: cover; }
+
+.futuro__item figcaption {
+  margin-top: .7rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: .95rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+/* Si son impares, la última ocupa el ancho completo y queda centrada */
+.futuro__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.futuro__item:last-child:nth-child(odd) .futuro__marco {
+  aspect-ratio: 16 / 10;
+  max-width: 62%;
+  margin-inline: auto;
+}
+.futuro__pie {
+  margin: 2rem auto 0;
+  max-width: 32ch;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* =========================================================================
+   24. Los regalos (vales)
+   ========================================================================= */
+.vale {
+  position: relative;
+  margin: 0 0 14px;
+  padding: 1.5rem 1.4rem 1.4rem;
+  border: 1px dashed var(--accent-dim);
+  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(232,180,160,.07), rgba(232,180,160,.02));
+  text-align: center;
+}
+/* Las dos muescas laterales, como un ticket */
+.vale::before, .vale::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  transform: translateY(-50%);
+}
+.vale::before { left: -9px; }
+.vale::after  { right: -9px; }
+
+.vale__sello {
+  display: block;
+  font-size: .62rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .6rem;
+}
+.vale__que {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--text);
+}
+.vale__nota {
+  margin: .55rem 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: .92rem;
+  color: var(--muted);
+}
+.regalos__pie {
+  margin: 1.6rem auto 0;
+  max-width: 30ch;
+  text-align: center;
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+:root[data-tema="papel"] .vale::before,
+:root[data-tema="papel"] .vale::after { background: var(--bg); }
