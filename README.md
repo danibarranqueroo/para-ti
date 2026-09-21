@@ -99,6 +99,16 @@ permite hasta que ella toque el botón. Si nunca lo toca, la web funciona igual.
 
 ---
 
+## Comprobar que todo se puede tocar
+
+```sh
+bash tools/comprobar.sh
+```
+
+Abre la web en el motor de Safari y comprueba que nada oculto ocupe sitio y que
+el lacre del sobre y los libros reciban el toque. Merece la pena pasarlo antes
+de publicar: una vez una capa invisible dejó toda la web sin poder pulsarse.
+
 ## Publicar los cambios
 
 ```sh

@@ -48,6 +48,12 @@ body {
 
 img { max-width: 100%; display: block; }
 
+/* IMPRESCINDIBLE: sin esto, cualquier regla nuestra con `display` gana al
+   display:none que el navegador da a [hidden], y un elemento "oculto" sigue
+   ocupando sitio y tragándose los toques. Pasó con la capa del libro: una
+   capa invisible a pantalla completa impedía pulsar nada. */
+[hidden] { display: none !important; }
+
 .noscript {
   padding: 4rem var(--pad-x);
   text-align: center;
