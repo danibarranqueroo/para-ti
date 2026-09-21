@@ -181,6 +181,27 @@
       return s;
     },
 
+    cielo: function (c) {
+      var s = section("cielo-chapter");
+      var inner = s.querySelector(".chapter__inner");
+      var cielo = el('<div class="cielo"></div>');
+
+      if (c.kicker) cielo.appendChild(el('<p class="kicker" data-reveal>' + txt(c.kicker) + "</p>"));
+      if (c.titulo) cielo.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
+
+      // Sin marco ni bordes: el negro de la imagen se funde con el del capítulo
+      var disco = el(
+        '<img class="cielo__disco" src="' + txt(c.src) + '" alt="' +
+        txt(c.alt || "Mapa de las estrellas de esa noche") +
+        '" loading="lazy" decoding="async" width="815" height="815" data-reveal>'
+      );
+      cielo.appendChild(disco);
+
+      if (c.pie) cielo.appendChild(el('<p class="cielo__pie" data-reveal>' + txt(c.pie) + "</p>"));
+      inner.appendChild(cielo);
+      return s;
+    },
+
     sobre: function (c) {
       var s = section("sobre-chapter");
       var inner = s.querySelector(".chapter__inner");

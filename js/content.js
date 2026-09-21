@@ -77,6 +77,15 @@ const HISTORIA = {
     },
 
     {
+      tipo: "cielo",
+      kicker: "Granada · 8 de febrero de 2021",
+      titulo: "Bajo estas estrellas\nempezó todo",
+      src: "img/cielo.png",
+      alt: "Mapa del cielo sobre Granada la noche del 8 de febrero de 2021",
+      pie: "Así estaba el cielo esa noche, justo encima de nosotros."
+    },
+
+    {
       tipo: "foto",
       src: "img/01.jpg",
       pie: "«Pie de foto: qué estabas pensando en ese momento.»"

@@ -123,7 +123,15 @@ En menos de un minuto está actualizado en la URL pública.
 ### Tipos de capítulo disponibles
 
 `portada` · `texto` · `foto` · `fotos` (mosaico) · `cita` · `contador` ·
-`lista` · `carta` (texto normal) · `sobre` (la que se abre) · `final`
+`lista` · `cielo` (mapa de estrellas) · `carta` (texto normal) ·
+`sobre` (la que se abre) · `final`
+
+### El capítulo del cielo
+
+Lleva el mapa de estrellas de Granada del 8 de febrero de 2021. El capítulo se
+funde a negro porque el fondo de esa imagen es negro puro: si no, se vería el
+cuadrado recortado contra el fondo de la web. El texto lo escribe la web, no va
+dentro de la imagen, así que puedes cambiarlo en `content.js` sin rehacer nada.
 
 Se pueden repetir y reordenar libremente: el orden del archivo es el orden en
 que ella los verá.

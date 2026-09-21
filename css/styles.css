@@ -747,3 +747,50 @@ body.is-locked .music-toggle { visibility: hidden; }
   .sobre__carta, .sobre__solapa, .sobre__sello { transition: none; }
   .gate { transition: none; }
 }
+
+/* =========================================================================
+   20. El capítulo del cielo (mapa de estrellas)
+
+   El fondo de la imagen es negro puro y el de la web no, así que el
+   capítulo se funde a negro para que el disco no se recorte como un
+   rectángulo. Sin marco: solo las estrellas flotando.
+   ========================================================================= */
+.cielo-chapter {
+  background: linear-gradient(180deg,
+              transparent 0%, #000 13%, #000 87%, transparent 100%);
+}
+.cielo-chapter::before { display: none; }   /* fuera el resplandor cálido */
+
+.cielo { text-align: center; }
+.cielo .kicker { margin-bottom: 1rem; }
+.cielo .title  { margin-bottom: 2rem; }
+
+.cielo__disco {
+  width: min(100%, 430px);
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  /* El disco respira un poco al aparecer */
+  transition: transform 1.6s var(--ease);
+}
+[data-reveal].cielo__disco { transform: translateY(18px) scale(.94); }
+[data-reveal].cielo__disco.is-visible { transform: none; }
+
+.cielo__pie {
+  margin: 1.75rem auto 0;
+  max-width: 28ch;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* En tema papel el mapa seguiría necesitando fondo oscuro para verse */
+:root[data-tema="papel"] .cielo-chapter {
+  background: linear-gradient(180deg,
+              transparent 0%, #12100F 14%, #12100F 86%, transparent 100%);
+}
+:root[data-tema="papel"] .cielo .title  { color: #F5EDE6; }
+:root[data-tema="papel"] .cielo .kicker { color: #E8B4A0; }
+:root[data-tema="papel"] .cielo__pie    { color: rgba(245, 237, 230, .6); }
