@@ -7,6 +7,23 @@
 
   var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------- Versión ----------
+     GitHub Pages pide al navegador que se guarde los archivos 10 minutos.
+     Para que un cambio se vea al instante, tools/publicar.sh le pone una
+     marca a cada archivo (?v=abc1234). Aquí la leemos de nuestra propia
+     etiqueta <script> y se la ponemos también a fotos y música, para que
+     nunca se quede nada viejo. */
+  var VER = (function () {
+    var sc = document.querySelector('script[src*="main.js"]');
+    var m = sc && sc.src.match(/[?&]v=([^&]+)/);
+    return m ? m[1] : "";
+  })();
+
+  function conVersion(src) {
+    if (!VER || !src || /^(https?:)?\/\//.test(src)) return src;
+    return src + (src.indexOf("?") < 0 ? "?" : "&") + "v=" + VER;
+  }
+
   /* ---------- Utilidades ---------- */
 
   // Escapa HTML y convierte los saltos de línea en <br>
@@ -30,7 +47,7 @@
   function photoFrame(src, aspect) {
     var frame = el(
       '<div class="photo__frame" data-label="foto pendiente">' +
-        '<img src="' + txt(src) + '" alt="" loading="lazy" decoding="async">' +
+        '<img src="' + txt(conVersion(src)) + '" alt="" loading="lazy" decoding="async">' +
       "</div>"
     );
     var img = frame.querySelector("img");
@@ -63,8 +80,8 @@
         var bg = el('<div class="cover__bg"></div>');
         // Solo la ponemos si la imagen existe de verdad
         var probe = new Image();
-        probe.onload = function () { bg.style.backgroundImage = 'url("' + c.fondo + '")'; };
-        probe.src = c.fondo;
+        probe.onload = function () { bg.style.backgroundImage = 'url("' + conVersion(c.fondo) + '")'; };
+        probe.src = conVersion(c.fondo);
         s.insertBefore(bg, s.firstChild);
       }
 
@@ -191,7 +208,7 @@
 
       // Sin marco ni bordes: el negro de la imagen se funde con el del capítulo
       var disco = el(
-        '<img class="cielo__disco" src="' + txt(c.src) + '" alt="' +
+        '<img class="cielo__disco" src="' + txt(conVersion(c.src)) + '" alt="' +
         txt(c.alt || "Mapa de las estrellas de esa noche") +
         '" loading="lazy" decoding="async" width="815" height="815" data-reveal>'
       );
@@ -349,7 +366,7 @@
   var arrancarMusica = null;        // lo usará también el corazón de la entrada
 
   if (HISTORIA.musica) {
-    audio.src = HISTORIA.musica;
+    audio.src = conVersion(HISTORIA.musica);
     btn.hidden = false;
 
     // Si el archivo no existe o el formato no se puede reproducir, escondemos
