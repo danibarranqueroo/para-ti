@@ -188,17 +188,23 @@
       if (c.titulo) inner.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
 
       var sobre = el('<div class="sobre" data-reveal></div>');
-      var cuerpo = el('<div class="sobre__cuerpo"></div>');
 
+      // La carta va ANTES del sobre: así crece hacia arriba y su borde
+      // inferior queda escondido detrás, como si saliera de dentro.
       var carta = el('<div class="sobre__carta"><div class="sobre__papel"><div class="sobre__texto"></div></div></div>');
       var texto = carta.querySelector(".sobre__texto");
       (c.parrafos || []).forEach(function (par) {
         texto.appendChild(el("<p>" + txt(par) + "</p>"));
       });
       if (c.cierre) texto.appendChild(el('<p class="sobre__cierre">' + txt(c.cierre) + "</p>"));
+      sobre.appendChild(carta);
 
-      cuerpo.appendChild(carta);
-      cuerpo.appendChild(el('<div class="sobre__bolsa"></div>'));
+      // Las piezas del sobre, en orden de profundidad
+      var cuerpo = el('<div class="sobre__sobre"></div>');
+      cuerpo.appendChild(el('<div class="sobre__base"></div>'));
+      cuerpo.appendChild(el('<div class="sobre__izq"></div>'));
+      cuerpo.appendChild(el('<div class="sobre__der"></div>'));
+      cuerpo.appendChild(el('<div class="sobre__abajo"></div>'));
       cuerpo.appendChild(el('<div class="sobre__solapa"></div>'));
 
       var sello = el(

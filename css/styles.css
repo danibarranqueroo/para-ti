@@ -573,127 +573,174 @@ body.is-locked .music-toggle { visibility: hidden; }
 
 /* =========================================================================
    19. El sobre con la carta dentro
-   ========================================================================= */
-.sobre { margin-top: 1.5rem; }
 
-.sobre__cuerpo {
-  position: relative;
-  perspective: 1100px;
+   Anatomía de un sobre de verdad: una base, dos solapas laterales, la de
+   abajo, y la de arriba (la que se abre). El lacre se apoya en su punta.
+   Todo se mide en % de la caja para que las proporciones no se rompan.
+   ========================================================================= */
+.sobre {
+  margin-top: 1.75rem;
+  max-width: 330px;
+  margin-inline: auto;
 }
 
-/* La carta: cerrada asoma un poco, abierta crece hasta mostrarse entera.
-   El truco de grid 0fr→1fr permite animar una altura desconocida. */
+/* --- La carta: crece hacia arriba saliendo del sobre --- */
 .sobre__carta {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows .9s var(--ease), transform .9s var(--ease);
-  transform: translateY(26px);
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: 0fr;          /* 0fr → 1fr permite animar una altura desconocida */
+  transform: translateY(24px);
+  transition: grid-template-rows .95s var(--ease),
+              transform .95s var(--ease),
+              margin-bottom .95s var(--ease);
 }
 .sobre.is-open .sobre__carta {
   grid-template-rows: 1fr;
   transform: translateY(0);
+  margin-bottom: -26px;             /* el borde inferior se mete tras el sobre */
 }
 .sobre__papel {
   overflow: hidden;
-  background: linear-gradient(170deg, #FBF3DF 0%, #F3E6C8 100%);
+  background:
+    linear-gradient(170deg, #FCF5E4 0%, #F4E8CD 100%);
   color: #4A3B32;
-  border-radius: 4px 4px 2px 2px;
-  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .75);
+  border-radius: 3px 3px 1px 1px;
+  box-shadow: 0 16px 34px -20px rgba(0, 0, 0, .7);
 }
-.sobre__texto { padding: clamp(1.5rem, 6vw, 2.25rem); }
+.sobre__texto { padding: clamp(1.4rem, 5.5vw, 2rem) clamp(1.3rem, 5vw, 1.8rem) 2.6rem; }
 .sobre__texto p {
   font-family: var(--serif);
-  font-size: 1.06rem;
+  font-size: 1.04rem;
   line-height: 1.85;
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.05rem;
   color: #4A3B32;
 }
 .sobre__texto p:last-child { margin-bottom: 0; }
 .sobre__cierre {
-  margin-top: 1.6rem !important;
-  padding-top: 1.3rem;
-  border-top: 1px solid rgba(74, 59, 50, .18);
+  margin-top: 1.5rem !important;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(74, 59, 50, .16);
   font-style: italic;
   color: #A8622B !important;
 }
 
-/* La bolsa del sobre, por delante de la carta */
-.sobre__bolsa {
+/* --- El sobre en sí --- */
+.sobre__sobre {
   position: relative;
-  z-index: 2;
-  height: 86px;
-  margin-top: -14px;
-  background: linear-gradient(170deg, #E8D9BC, #D9C6A2);
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 16px 30px -18px rgba(0, 0, 0, .6);
+  z-index: 3;
+  aspect-ratio: 1.55 / 1;           /* proporción de sobre de carta */
+  perspective: 1000px;
 }
-.sobre__bolsa::before,
-.sobre__bolsa::after {      /* los dos dobleces en diagonal */
+.sobre__sobre > div { position: absolute; inset: 0; }
+
+/* Sombra en el canto superior: hace que la carta parezca metida dentro,
+   no apoyada encima. Queda tapada por la solapa mientras está cerrado. */
+.sobre__sobre::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,.06) 49.6%, transparent 50%);
+  left: 0; right: 0; top: 0;
+  height: 16px;
+  z-index: 4;
+  background: linear-gradient(180deg, rgba(60, 45, 25, .28), transparent);
 }
-.sobre__bolsa::after { background: linear-gradient(225deg, rgba(0,0,0,.06) 49.6%, transparent 50%); }
 
-/* La solapa de arriba, que se abre hacia atrás */
+.sobre__base {
+  background: linear-gradient(180deg, #E7D9B8 0%, #D6C49C 100%);
+  box-shadow: 0 26px 42px -20px rgba(0, 0, 0, .65);
+}
+
+/* Las dos solapas laterales, con la línea de doblez donde se juntan */
+.sobre__izq {
+  background: linear-gradient(95deg, #E2D1AC 0%, #CDB98D 100%);
+  clip-path: polygon(0 0, 51% 53%, 0 100%);
+}
+.sobre__der {
+  background: linear-gradient(265deg, #E2D1AC 0%, #CDB98D 100%);
+  clip-path: polygon(100% 0, 49% 53%, 100% 100%);
+}
+
+/* La solapa de abajo, por delante de las laterales */
+.sobre__abajo {
+  background: linear-gradient(0deg, #E6D8B6 0%, #D2BE95 100%);
+  clip-path: polygon(0 100%, 50% 47%, 100% 100%);
+}
+
+/* La solapa de arriba: la que se abre */
 .sobre__solapa {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 78px;
-  z-index: 3;
-  background: linear-gradient(175deg, #EFE2C8, #E0CDA9);
+  height: 54%;
+  inset: 0 0 auto 0 !important;
+  background: linear-gradient(180deg, #F7EEDA 0%, #E9DBBA 100%);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
   transform: rotateX(0deg);
-  transition: transform .8s var(--ease), z-index 0s .4s;
-  backface-visibility: hidden;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, .3));
+  z-index: 4;
+  transition: transform .8s var(--ease), opacity .5s var(--ease) .2s;
 }
+/* Al abrirse se levanta y se desvanece. No puede pasar por detrás de la
+   carta (vive en otro contexto de apilamiento), así que desaparece. */
 .sobre.is-open .sobre__solapa {
-  transform: rotateX(-172deg);
-  z-index: 0;
+  transform: rotateX(-118deg);
+  opacity: 0;
 }
 
-/* El lacre rojo que hay que tocar */
+/* --- El lacre, apoyado en la punta de la solapa --- */
 .sobre__sello {
   position: absolute;
-  top: 52px; left: 50%;
-  z-index: 4;
+  left: 50%;
+  top: 54%;                          /* justo donde acaba la solapa */
+  z-index: 5;
+  width: 60px; height: 60px;
   transform: translate(-50%, -50%);
-  width: 76px; height: 76px;
   display: grid;
   place-items: center;
   border: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle at 34% 30%, #C4453F, #8E2823 70%);
-  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, .6), inset 0 -2px 6px rgba(0,0,0,.35);
-  color: #F7E4D8;
+  /* Borde ligeramente irregular: parece cera, no una pelota */
+  border-radius: 46% 54% 52% 48% / 51% 47% 53% 49%;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, .17), transparent 46%),
+    radial-gradient(circle at 52% 58%, #B93A32 0%, #96271F 62%, #701A15 100%);
+  box-shadow:
+    0 4px 11px -2px rgba(0, 0, 0, .58),
+    inset 0 0 0 3px rgba(0, 0, 0, .09),
+    inset 0 -2px 6px rgba(0, 0, 0, .38);
+  color: #F2D9CC;
   font-family: var(--serif);
   font-style: italic;
-  font-size: .92rem;
+  font-size: .82rem;
+  letter-spacing: .02em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .35);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: transform .5s var(--ease), opacity .4s var(--ease);
+  transition: transform .55s var(--ease), opacity .45s var(--ease);
 }
-.sobre__sello:active { transform: translate(-50%, -50%) scale(.92); }
+.sobre__sello:active { transform: translate(-50%, -50%) scale(.9); }
 .sobre.is-open .sobre__sello {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(.6);
+  transform: translate(-50%, -50%) scale(.55) rotate(-18deg);
   pointer-events: none;
 }
 
 .sobre__pista {
-  margin: 1.1rem 0 0;
+  margin: 1.15rem 0 0;
   text-align: center;
-  font-size: .72rem;
+  font-size: .7rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--muted);
   transition: opacity .4s var(--ease);
 }
 .sobre.is-open .sobre__pista { opacity: 0; }
+
+/* En tema claro el sobre necesita separarse del fondo */
+:root[data-tema="papel"] .sobre__base {
+  background: linear-gradient(180deg, #E0CFA8 0%, #CDB88C 100%);
+  box-shadow: 0 22px 36px -22px rgba(74, 59, 50, .55);
+}
+:root[data-tema="papel"] .sobre__papel {
+  box-shadow: 0 14px 30px -20px rgba(74, 59, 50, .5);
+}
 
 /* Cuando el sistema pide menos movimiento: el sobre se abre sin acrobacias */
 @media (prefers-reduced-motion: reduce) {
