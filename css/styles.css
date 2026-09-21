@@ -1162,3 +1162,22 @@ body.is-locked .music-toggle { visibility: hidden; }
 :root[data-tema="papel"] .estante__tabla {
   background: linear-gradient(180deg, #8A6A4A 0%, #6B5138 60%, #513D2A 100%);
 }
+
+/* =========================================================================
+   26. Fotos antiguas (las de su infancia, las que da su madre)
+   ========================================================================= */
+.photo__frame--polaroid {
+  background: #F2EDE1;
+  padding: 11px 11px 14px;
+  border-radius: 2px;
+  box-shadow: 0 22px 44px -22px rgba(0, 0, 0, .95);
+  transform: rotate(-1.2deg);
+}
+.photo__frame--polaroid::after { box-shadow: none; }   /* sin viñeta */
+.photo__frame--polaroid img {
+  border-radius: 1px;
+  /* Calidez de foto revelada hace veinte años */
+  filter: sepia(.24) saturate(.88) contrast(.96) brightness(1.02);
+}
+.mosaic .photo__frame--polaroid { padding: 7px 7px 9px; }
+.mosaic div:nth-child(even) .photo__frame--polaroid { transform: rotate(1.4deg); }

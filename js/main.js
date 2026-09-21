@@ -44,9 +44,10 @@
 
   // Marca de foto: si el archivo aún no existe, deja un hueco elegante
   // en vez del icono roto del navegador.
-  function photoFrame(src, aspect) {
+  function photoFrame(src, aspect, estilo) {
     var frame = el(
-      '<div class="photo__frame" data-label="foto pendiente">' +
+      '<div class="photo__frame' + (estilo ? " photo__frame--" + txt(estilo) : "") +
+      '" data-label="foto pendiente">' +
         '<img src="' + txt(conVersion(src)) + '" alt="" loading="lazy" decoding="async">' +
       "</div>"
     );
@@ -115,7 +116,7 @@
       var inner = s.querySelector(".chapter__inner");
       if (c.kicker) inner.appendChild(el('<p class="kicker" data-reveal>' + txt(c.kicker) + "</p>"));
       var fig = el('<figure class="photo" data-reveal></figure>');
-      fig.appendChild(photoFrame(c.src, "4 / 5"));
+      fig.appendChild(photoFrame(c.src, "4 / 5", c.estilo));
       if (c.pie) fig.appendChild(el('<figcaption class="photo__caption">' + txt(c.pie) + "</figcaption>"));
       inner.appendChild(fig);
       return s;
@@ -129,7 +130,7 @@
       var grid = el('<div class="mosaic"></div>');
       (c.fotos || []).forEach(function (src) {
         var wrap = el('<div data-reveal></div>');
-        wrap.appendChild(photoFrame(src, "1 / 1"));
+        wrap.appendChild(photoFrame(src, "1 / 1", c.estilo));
         grid.appendChild(wrap);
       });
       if (c.pie) grid.appendChild(el('<p class="photo__caption mosaic__caption" data-reveal>' + txt(c.pie) + "</p>"));
@@ -158,7 +159,8 @@
       if (c.titulo) inner.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
 
       var unidades = [["dias", "días"], ["horas", "horas"], ["min", "minutos"], ["seg", "segundos"]];
-      var grid = el('<div class="counter__grid" data-reveal></div>');
+      var grid = el('<div class="counter__grid" data-reveal data-desde="' +
+                    txt(c.desde || HISTORIA.fechaInicio) + '"></div>');
       unidades.forEach(function (u) {
         grid.appendChild(el(
           '<div class="counter__cell">' +
@@ -485,25 +487,28 @@
 
   /* ---------- Contador en vivo ---------- */
 
-  var inicio = new Date(HISTORIA.fechaInicio).getTime();
-  var celdas = document.querySelectorAll("[data-unit]");
+  var relojes = document.querySelectorAll(".counter__grid");
 
-  if (celdas.length && !isNaN(inicio)) {
+  if (relojes.length) {
     var nf = new Intl.NumberFormat("es-ES");
     var pad = function (n) { return n < 10 ? "0" + n : String(n); };
 
     var tick = function () {
-      var ms = Date.now() - inicio;
-      if (ms < 0) ms = 0;
-      var seg = Math.floor(ms / 1000);
-      var valores = {
-        dias:  nf.format(Math.floor(seg / 86400)),
-        horas: pad(Math.floor(seg / 3600) % 24),
-        min:   pad(Math.floor(seg / 60) % 60),
-        seg:   pad(seg % 60)
-      };
-      Array.prototype.forEach.call(celdas, function (c) {
-        c.textContent = valores[c.dataset.unit];
+      Array.prototype.forEach.call(relojes, function (reloj) {
+        var inicio = new Date(reloj.dataset.desde).getTime();
+        if (isNaN(inicio)) return;
+        var ms = Date.now() - inicio;
+        if (ms < 0) ms = 0;
+        var seg = Math.floor(ms / 1000);
+        var valores = {
+          dias:  nf.format(Math.floor(seg / 86400)),
+          horas: pad(Math.floor(seg / 3600) % 24),
+          min:   pad(Math.floor(seg / 60) % 60),
+          seg:   pad(seg % 60)
+        };
+        Array.prototype.forEach.call(reloj.querySelectorAll("[data-unit]"), function (c) {
+          c.textContent = valores[c.dataset.unit];
+        });
       });
     };
     tick();

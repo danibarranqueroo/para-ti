@@ -22,6 +22,10 @@ const HISTORIA = {
   // Cuándo empezasteis. Si recuerdas la hora, cámbiala (formato 24h).
   fechaInicio: "2021-02-08T00:00:00",
 
+  // Su fecha de nacimiento. Pon el año y aparecerá un contador con los días
+  // que lleva en el mundo. Si lo dejas así, ese capítulo no cuenta nada.
+  fechaNacimiento: "AAAA-09-26T00:00:00",
+
   // Dos estilos disponibles. Cambia la palabra y ya está:
   //   "noche" → fondo oscuro, cinematográfico (el de ahora)
   //   "papel" → fondo crema tipo carta, como el vídeo que viste
@@ -46,6 +50,12 @@ const HISTORIA = {
   /* --- La historia, capítulo a capítulo -------------------------------- */
   capitulos: [
 
+    /* ===================================================================
+       PRIMER ACTO — ELLA
+       Antes de hablar de nosotros, hablamos de ella. Esto es lo que hace
+       que la web sea de su cumpleaños y no de nuestro aniversario.
+       =================================================================== */
+
     {
       tipo: "portada",
       fondo: "img/portada.jpg",
@@ -57,10 +67,88 @@ const HISTORIA = {
 
     {
       tipo: "texto",
-      kicker: "Antes",
+      kicker: "Antes de nada",
+      titulo: "Hoy no va\nde nosotros",
+      cuerpo: [
+        "«PENDIENTE — el capítulo que lo cambia todo. Dile que hoy no va de vuestra historia: va de ella. Que se celebra que existe, no que os encontrasteis. Dos o tres frases bastan.»"
+      ]
+    },
+
+    {
+      tipo: "texto",
+      kicker: "Mucho antes de mí",
+      titulo: "La niña que\nfuiste",
+      cuerpo: [
+        "«PENDIENTE — lo que te cuente su madre. Cómo era de pequeña, qué hacía, qué decía, de qué se reía. Cuanto más concreto y más tonto, mejor.»"
+      ]
+    },
+
+    {
+      tipo: "fotos",
+      estilo: "polaroid",
+      fotos: ["img/nina-1.jpg", "img/nina-2.jpg", "img/nina-3.jpg", "img/nina-4.jpg"],
+      pie: "«PENDIENTE — pídele a su madre 4 fotos de ella de pequeña.»"
+    },
+
+    {
+      tipo: "contador",
+      kicker: "Desde entonces",
+      titulo: "Llevas en el mundo",
+      desde: "AAAA-09-26T00:00:00",   // pon su año de nacimiento aquí también
+      pie: "y menos mal"
+    },
+
+    {
+      tipo: "texto",
+      kicker: "La universidad",
+      titulo: "En quién te\nibas convirtiendo",
+      cuerpo: [
+        "«PENDIENTE — sus años de carrera: qué estudió, cómo se lo curró, quién era entonces, de qué se enorgullece. Esto es suyo, tú no aparezcas.»"
+      ]
+    },
+
+    {
+      tipo: "lista",
+      kicker: "Lo que veo",
+      titulo: "Lo que admiro\nde ti",
+      items: [
+        "«PENDIENTE — y aquí la regla difícil: que ninguna frase te incluya a ti.»",
+        "«No vale \"me haces mejor\". Vale \"eres incapaz de dejar a nadie atrás\".»",
+        "«Lo valiente que eres cuando…»",
+        "«Lo bien que se te da…»",
+        "«La cabezonería con la que…»",
+        "«Lo que haces por los tuyos sin que nadie te lo pida»"
+      ]
+    },
+
+    {
+      tipo: "lista",
+      kicker: "Y además",
+      titulo: "Lo graciosa\nque eres",
+      items: [
+        "«PENDIENTE — cosas concretas: frases que dice, caras que pone, cómo se ríe.»",
+        "«Lo que dice siempre cuando…»",
+        "«Cómo se ríe de sus propios chistes antes de contarlos»"
+      ]
+    },
+
+    {
+      tipo: "foto",
+      src: "img/ella.jpg",
+      pie: "«PENDIENTE — una foto de ella sola, que le guste a ella.»"
+    },
+
+    /* ===================================================================
+       SEGUNDO ACTO — NOSOTROS
+       Aquí sí: el 8 de febrero, los viajes, el tatuaje.
+       =================================================================== */
+
+    {
+      tipo: "texto",
+      kicker: "Y entonces",
       titulo: "Cómo era esto\nantes de ti",
       cuerpo: [
-        "«PENDIENTE: una o dos frases sobre cómo era tu vida antes del 8 de febrero de 2021. No hace falta que sea triste, solo más pequeña.»"
+        "«PENDIENTE — cómo era tu vida antes del 8 de febrero de 2021. No hace falta que sea triste, solo más pequeña.»"
       ]
     },
 
@@ -69,7 +157,7 @@ const HISTORIA = {
       kicker: "8 de febrero de 2021",
       titulo: "El día que\nempezó todo",
       cuerpo: [
-        "«PENDIENTE: ese día con detalle. Dónde estabais, qué hora era, qué llevaba puesto, qué dijo ella, qué pensaste tú.»"
+        "«PENDIENTE — ese día con detalle. Dónde estabais, qué hora era, qué llevaba puesto, qué dijo ella, qué pensaste tú.»"
       ]
     },
 
@@ -85,7 +173,7 @@ const HISTORIA = {
     {
       tipo: "foto",
       src: "img/01.jpg",
-      pie: "«PENDIENTE: pie de foto.»"
+      pie: "«PENDIENTE — pie de foto.»"
     },
 
     {
@@ -119,15 +207,8 @@ const HISTORIA = {
       kicker: "Nueve sitios",
       titulo: "Dónde hemos\nsido felices",
       items: [
-        "Portugal",
-        "Canarias",
-        "Ámsterdam",
-        "Madrid",
-        "Barcelona",
-        "Benidorm",
-        "Murcia",
-        "Almería",
-        "Irlanda"
+        "Portugal", "Canarias", "Ámsterdam", "Madrid", "Barcelona",
+        "Benidorm", "Murcia", "Almería", "Irlanda"
       ]
     },
 
@@ -136,7 +217,7 @@ const HISTORIA = {
       kicker: "El álbum",
       titulo: "Trocitos",
       fotos: ["img/02.jpg", "img/03.jpg", "img/04.jpg", "img/05.jpg"],
-      pie: "«PENDIENTE: una frase que resuma todas estas fotos juntas.»"
+      pie: "«PENDIENTE — una frase que resuma todas estas fotos juntas.»"
     },
 
     {
@@ -162,11 +243,7 @@ const HISTORIA = {
       tipo: "lista",
       kicker: "Y aun así",
       titulo: "Empezar\notra vez",
-      items: [
-        "Empezar otra vez",
-        "Confiar otra vez",
-        "Soñar otra vez"
-      ]
+      items: ["Empezar otra vez", "Confiar otra vez", "Soñar otra vez"]
     },
 
     {
@@ -182,10 +259,14 @@ const HISTORIA = {
       texto: "Te elegiría siempre a ti. En cada vida, en cien mundos, en cada versión de la realidad.\n\nPorque aunque lleve tu inicial tatuada, es en mi corazón donde estás tatuada tú. Y es ahí donde vas a quedarte para siempre.\n\nPorque te elegiría una y mil veces."
     },
 
+    /* ===================================================================
+       TERCER ACTO — LO QUE VIENE
+       =================================================================== */
+
     {
       tipo: "foto",
       src: "img/06.jpg",
-      pie: "«PENDIENTE: una foto de ahora, de las recientes.»"
+      pie: "«PENDIENTE — una foto de ahora, de las recientes.»"
     },
 
     {
@@ -215,10 +296,10 @@ const HISTORIA = {
       titulo: "Te he escrito\nuna carta",
       sello: "Ábreme",
       parrafos: [
-        "«PENDIENTE: la carta. Escríbela de una sentada, sin corregirte, como si se la estuvieras diciendo a la cara.»",
+        "«PENDIENTE — la carta. Escríbela de una sentada, sin corregirte, como si se la estuvieras diciendo a la cara.»",
         "«Tres o cuatro párrafos van perfectos. Que se lea despacio.»"
       ],
-      cierre: "«PENDIENTE: la última frase, la que más pese.»"
+      cierre: "«PENDIENTE — la última frase, la que más pese.»"
     },
 
     {
@@ -226,8 +307,6 @@ const HISTORIA = {
       kicker: "Ah, y una cosa más",
       titulo: "Tu estantería",
       instruccion: "toca un libro",
-      // El texto del lomo NO debe desvelar el regalo: es lo que ella ve
-      // antes de abrirlo. El regalo está en "que".
       libros: [
         { lomo: "Cuidarte",            que: "Una limpieza facial", nota: "cuando tú digas" },
         { lomo: "Para leer",           que: "Un libro" },
