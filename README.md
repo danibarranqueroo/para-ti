@@ -77,6 +77,12 @@ tema: "noche",   // fondo oscuro, cinematográfico
 tema: "papel",   // fondo crema tipo carta
 ```
 
+## Los vales para imprimir
+
+Abre `vales.html` y dale a **Cmd + P**: salen los dos vales (limpieza facial y
+ropa) en un A4, con su matriz troquelada y los dibujos a línea. Los dibujos son
+SVG dentro del propio archivo, no imágenes: imprimen nítidos a cualquier tamaño.
+
 ## La tarjeta con el QR
 
 Abre `tarjeta.html` en el navegador y dale a **Cmd + P**: sale una tarjeta A6
@@ -128,6 +134,7 @@ En menos de un minuto está actualizado en la URL pública.
 | `css/styles.css` | Colores, tipografías, animaciones. |
 | `js/main.js` | El motor que pinta los capítulos. |
 | `tarjeta.html` | La tarjeta con el QR, para imprimir. |
+| `vales.html` | Los dos vales de regalo, para imprimir. |
 | `tools/` | Scripts de fotos y de QR. |
 
 ### Tipos de capítulo disponibles

@@ -308,10 +308,11 @@ const HISTORIA = {
       titulo: "Tu estantería",
       instruccion: "toca un libro",
       libros: [
-        { lomo: "Cuidarte",            que: "Una limpieza facial", nota: "cuando tú digas" },
-        { lomo: "Para leer",           que: "Un libro" },
-        { lomo: "No perder la página", que: "Un separador de libros" },
-        { lomo: "Para ponerte guapa",  que: "Ropa" }
+        { lomo: "Cuidarte",        que: "Una limpieza facial", nota: "cuando tú digas" },
+        { lomo: "Para leer",       que: "Libros",              nota: "en plural, sí" },
+        { lomo: "Entre estos dos", que: "Un book nook",        nota: "un mundo diminuto para meter en tu estantería" },
+        { lomo: "Que viaje bien",  que: "Una funda para el Kindle" },
+        { lomo: "Para ponerte guapa", que: "Ropa",             nota: "elegida por mí, asúmelo" }
       ]
     },
 
