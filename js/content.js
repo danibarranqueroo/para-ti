@@ -312,7 +312,7 @@ const HISTORIA = {
         { lomo: "Para leer",       que: "Libros",              nota: "en plural, sí" },
         { lomo: "Entre estos dos", que: "Un book nook",        nota: "un mundo diminuto para meter en tu estantería" },
         { lomo: "Que viaje bien",  que: "Una funda para el Kindle" },
-        { lomo: "Para ponerte guapa", que: "Ropa",             nota: "elegida por mí, asúmelo" }
+        { lomo: "Para ponerte guapa", que: "Ropa",             nota: "la que tú quieras: eliges tú" }
       ]
     },
 
