@@ -77,23 +77,27 @@ tema: "noche",   // fondo oscuro, cinematográfico
 tema: "papel",   // fondo crema tipo carta
 ```
 
-## Los vales para imprimir
+## Lo que se imprime en papel
 
-Abre `vales.html` y dale a **Cmd + P**: salen los dos vales (limpieza facial y
-ropa) en un A4, con su matriz troquelada y los dibujos a línea. Los dibujos son
-SVG dentro del propio archivo, no imágenes: imprimen nítidos a cualquier tamaño.
+Todo está en **un solo archivo**, `imprimir.html`: la tarjeta del QR y los dos
+vales. Está junto para que un texto no acabe en dos sitios distintos y se
+contradigan (ya pasó una vez).
 
-## La tarjeta con el QR
-
-Abre `tarjeta.html` en el navegador y dale a **Cmd + P**: sale una tarjeta A6
-lista para recortar, con el QR que lleva a la web. Para regenerar el QR (por
-ejemplo si cambias la URL):
+Para regenerar el PDF después de cambiar algo:
 
 ```sh
-swift tools/generar-qr.swift "https://tu-url/" img/qr.png
+bash tools/generar-pdf.sh
 ```
 
-Se genera en tu Mac con Core Image: la URL no sale a ningún servicio externo.
+Genera `regalos-para-imprimir.pdf`: un A4 exacto con las tres piezas en cuartos
+de 105 × 148,5 mm (A6), listo para que lo corten y plastifiquen. Las
+tipografías van incrustadas y el dibujo de cada vale es SVG, así que imprime
+nítido a cualquier tamaño.
+
+**Qué pedir en la papelería:** impresión en color a sangre (sin márgenes) en
+A4, o en A3 recortado a A4. Que corten por las dos líneas centrales — hay
+marcas en los bordes — y que plastifiquen las tres piezas. La cuarta esquina
+va vacía.
 
 ## Añadir música
 
@@ -133,8 +137,7 @@ En menos de un minuto está actualizado en la URL pública.
 | `index.html` | Esqueleto. Casi nunca hay que tocarlo. |
 | `css/styles.css` | Colores, tipografías, animaciones. |
 | `js/main.js` | El motor que pinta los capítulos. |
-| `tarjeta.html` | La tarjeta con el QR, para imprimir. |
-| `vales.html` | Los dos vales de regalo, para imprimir. |
+| `imprimir.html` | La hoja A4 con el QR y los dos vales. |
 | `tools/` | Scripts de fotos y de QR. |
 
 ### Tipos de capítulo disponibles
