@@ -43,7 +43,6 @@ cae sola en su sitio. El formato da igual (HEIC del iPhone incluido).
 
 | Archivo | Dónde sale |
 |---|---|
-| `portada.jpg` | Fondo de la portada (opcional) |
 | `nina-1` … `nina-4.jpg` | Su infancia, en marco de foto antigua |
 | `graduacion.jpg` | Dentro del capítulo de la universidad |
 | `riendose.jpg` | Dentro de «Lo graciosa que eres» |

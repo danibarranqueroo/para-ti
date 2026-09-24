@@ -56,7 +56,8 @@ const HISTORIA = {
 
     {
       tipo: "portada",
-      fondo: "img/portada.jpg",
+      // Sin foto de fondo, a propósito: la tipografía sola sobre negro.
+      // Si algún día quieres una, añade aquí:  fondo: "img/loquesea.jpg",
       kicker: "26 de septiembre",
       titulo: "Feliz cumpleaños,\nMi Amorcito",
       subtitulo: "Te he hecho una cosa. Ponte cómoda.",
