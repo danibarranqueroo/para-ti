@@ -70,7 +70,7 @@ const HISTORIA = {
       cuerpo: [
         "Hoy se celebra que cumples 25 años. Que tienes ya un cuarto de siglo.",
         "Para tu familia seguro que parece que fue ayer cuando naciste. Y para mí parece que fue ayer cuando vi por primera vez esa sonrisa tan bonita.",
-        "«MÍA: así que hoy, por un rato, esto no va de nosotros. Va de ti. De los veinticinco años que llevas siendo tú, casi todos sin mí.»"
+        "Así que hoy, por un rato, esto no va de nosotros. Va de ti. De los veinticinco años que llevas siendo tú, casi todos sin mí."
       ]
     },
 
@@ -121,9 +121,9 @@ const HISTORIA = {
         "Esa valentía de decir lo que piensas en todo momento",
         "Esa capacidad de seguir adelante pese a los dolores y el sufrimiento",
         "Todo lo que haces por los demás sin pedir nunca nada a cambio",
-        "«MÍA: que te has construido tu sitio tú sola, sin que nadie te lo regalara»",
-        "«MÍA: que no te conformas con lo primero que te dicen»",
-        "«MÍA: lo bien que sostienes a la gente que quieres cuando se les cae todo»"
+        "Que te has construido tu sitio tú sola, sin que nadie te lo regalara",
+        "Que no te conformas con lo primero que te dicen",
+        "Lo bien que sostienes a la gente que quieres cuando se les cae todo"
       ]
     },
 
@@ -159,7 +159,7 @@ const HISTORIA = {
         "Y todo esto empezó por un tweet tuyo y por ser yo un pesado. Quién lo diría.",
         "No hace falta contar la misma historia mil veces. Si fuera una coincidencia romántica de la vida, algo divertido, puede que sí. Pero simplemente fuimos dos personas destinadas a conectar y a estar juntas para siempre.",
         "Un chispazo que desde el momento uno en el que hablamos ya se notaba.",
-        "«MÍA: no hubo señales ni casualidades que contar. Hubo dos personas hablando a deshora y la sensación rarísima de estar llegando tarde a algo que ya era nuestro.»"
+        "No hubo señales ni casualidades que contar. Hubo dos personas hablando a deshora y la sensación rarísima de estar llegando tarde a algo que ya era nuestro."
       ]
     },
 
@@ -272,7 +272,7 @@ const HISTORIA = {
       kicker: "Y aun así",
       titulo: "Empezar\notra vez",
       items: ["Empezar otra vez", "Confiar otra vez", "Soñar otra vez"],
-      cierre: "«MÍA: nadie te cuenta que lo difícil no es enamorarse. Es volver a hacerlo de la misma persona. Otra vez, y otra, y otra.»"
+      cierre: "Nadie te cuenta que lo difícil no es enamorarse. Es volver a hacerlo de la misma persona. Otra vez, y otra, y otra."
     },
 
     {
