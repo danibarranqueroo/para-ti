@@ -69,6 +69,13 @@ for foto in "${FOTOS[@]}"; do
        --resampleHeightWidthMax "$LADO_MAX" \
        "$foto" --out "$salida" >/dev/null 2>&1
 
+  # Las fotos del iPhone guardan los píxeles como salieron del sensor más una
+  # etiqueta que dice "gírame". Como luego borramos los metadatos (por el GPS),
+  # hay que rotar los píxeles de verdad ANTES o la foto se queda tumbada.
+  read -r GRADOS ESPEJO <<< "$(python3 "$RAIZ/tools/orientacion.py" "$salida")"
+  [[ "$GRADOS" != "0" ]] && sips --rotate "$GRADOS" "$salida" >/dev/null 2>&1
+  [[ "$ESPEJO" == "1" ]] && sips --flip horizontal "$salida" >/dev/null 2>&1
+
   python3 "$RAIZ/tools/limpiar-exif.py" "$salida"
 
   medidas=$(sips -g pixelWidth -g pixelHeight "$salida" 2>/dev/null \

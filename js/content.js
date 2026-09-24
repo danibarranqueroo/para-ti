@@ -297,7 +297,8 @@ const HISTORIA = {
         "No te digo te quiero, pero sé cuál es tu lado de la cama, y si veo algo que te gusta pienso en ti",
         "No te digo te quiero, pero en cada canción de una historia bonita imagino que somos tú y yo"
       ],
-      cierre: "Y puede que ese sea mi problema: que quiero quedarme contigo para toda la vida y no soy capaz de expresarlo correctamente."
+      cierre: "Y puede que ese sea mi problema: que quiero quedarme contigo para toda la vida y no soy capaz de expresarlo correctamente.",
+      foto: "img/ella-2.jpg"
     },
 
     {
@@ -318,8 +319,8 @@ const HISTORIA = {
 
     {
       tipo: "foto",
-      src: "img/ella-2.jpg",
-      pie: "«PENDIENTE — una foto de ahora, de las recientes.»"
+      src: "img/nosotros-ahora.jpg",
+      pie: "«PENDIENTE — pie de la foto de los dos ahora.»"
     },
 
     {
