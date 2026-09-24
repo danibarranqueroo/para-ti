@@ -142,7 +142,7 @@ const HISTORIA = {
         "Las caras que intentas poner cuando algo te da risa pero quieres estar seria"
       ],
       foto: "img/riendose.jpg",
-      pieFoto: "Aquí, por ejemplo. Muerta de frío, envuelta en una toalla,\nriéndote de ti misma antes que nadie."
+      pieFoto: "Esa risa preciosa."
     },
 
     {
@@ -190,7 +190,7 @@ const HISTORIA = {
     {
       tipo: "foto",
       src: "img/nosotros-inicio.jpg",
-      pie: "Filtro de mariposas y morritos.\nAsí de serios empezamos."
+      pie: "Así de guapos éramos al principio."
     },
 
     {
