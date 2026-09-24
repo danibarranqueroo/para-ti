@@ -1181,3 +1181,14 @@ body.is-locked .music-toggle { visibility: hidden; }
 }
 .mosaic .photo__frame--polaroid { padding: 7px 7px 9px; }
 .mosaic div:nth-child(even) .photo__frame--polaroid { transform: rotate(1.4deg); }
+
+/* Frase de cierre de una lista */
+.list__cierre {
+  margin: 1.8rem 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--accent);
+  max-width: 34ch;
+}

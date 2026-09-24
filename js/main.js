@@ -179,6 +179,7 @@
       var inner = s.querySelector(".chapter__inner");
       if (c.kicker) inner.appendChild(el('<p class="kicker" data-reveal>' + txt(c.kicker) + "</p>"));
       if (c.titulo) inner.appendChild(el('<h2 class="title" data-reveal>' + txt(c.titulo) + "</h2>"));
+      if (c.intro)  inner.appendChild(el('<p class="body" data-reveal>' + txt(c.intro) + "</p>"));
       var ul = el('<ul class="list"></ul>');
       (c.items || []).forEach(function (item) {
         var texto = typeof item === "string" ? item : item.texto;
@@ -190,6 +191,7 @@
         ));
       });
       inner.appendChild(ul);
+      if (c.cierre) inner.appendChild(el('<p class="list__cierre" data-reveal>' + txt(c.cierre) + "</p>"));
       return s;
     },
 

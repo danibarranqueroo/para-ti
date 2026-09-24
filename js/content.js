@@ -52,8 +52,6 @@ const HISTORIA = {
 
     /* ===================================================================
        PRIMER ACTO — ELLA
-       Antes de hablar de nosotros, hablamos de ella. Esto es lo que hace
-       que la web sea de su cumpleaños y no de nuestro aniversario.
        =================================================================== */
 
     {
@@ -67,19 +65,23 @@ const HISTORIA = {
 
     {
       tipo: "texto",
-      kicker: "Antes de nada",
-      titulo: "Hoy no va\nde nosotros",
+      kicker: "26 de septiembre",
+      titulo: "Hoy cumples\nun cuarto de siglo",
       cuerpo: [
-        "«PENDIENTE — el capítulo que lo cambia todo. Dile que hoy no va de vuestra historia: va de ella. Que se celebra que existe, no que os encontrasteis. Dos o tres frases bastan.»"
+        "Hoy se celebra que cumples 25 años. Que tienes ya un cuarto de siglo.",
+        "Para tu familia seguro que parece que fue ayer cuando naciste. Y para mí parece que fue ayer cuando vi por primera vez esa sonrisa tan bonita.",
+        "«MÍA: así que hoy, por un rato, esto no va de nosotros. Va de ti. De los veinticinco años que llevas siendo tú, casi todos sin mí.»"
       ]
     },
 
     {
       tipo: "texto",
       kicker: "Mucho antes de mí",
-      titulo: "La niña que\nfuiste",
+      titulo: "La niña\nque fuiste",
       cuerpo: [
-        "«PENDIENTE — lo que te cuente su madre. Cómo era de pequeña, qué hacía, qué decía, de qué se reía. Cuanto más concreto y más tonto, mejor.»"
+        "Sé que fuiste una niña muy feliz. Con tus muñecas, con tu colección de Monster High, todo el día rodeada de unos tíos que siempre te chinchaban pero que te querían como a nadie en el mundo.",
+        "Una madre que siempre ha querido que seas la más feliz del mundo. Y unos abuelos que harían cualquier cosa por ti.",
+        "También sé que has pasado momentos duros, y que no todo es siempre felicidad. Pero es justo eso lo que te ha llevado a ser la mujer tan increíble que eres hoy."
       ]
     },
 
@@ -100,24 +102,28 @@ const HISTORIA = {
 
     {
       tipo: "texto",
-      kicker: "La universidad",
+      kicker: "Del pueblo a Granada",
       titulo: "En quién te\nibas convirtiendo",
       cuerpo: [
-        "«PENDIENTE — sus años de carrera: qué estudió, cómo se lo curró, quién era entonces, de qué se enorgullece. Esto es suyo, tú no aparezcas.»"
+        "Poco a poco fuiste creciendo. Haciendo amigas, alguna que otra trastada por el pueblo. Hasta que llegó el momento de dar el paso e irte a Granada a estudiar.",
+        "Solo tú sabes la cantidad de autobuses que has cogido. El esfuerzo de estar allí día a día, las horas estudiando, los llantos y las alegrías.",
+        "Pero lo más importante es que todo el mundo que te conoce está súper orgulloso de ti. Yo el que más. Porque siempre has dado más de lo que podías. Porque aunque te costara, seguías intentándolo. Y porque lo has logrado.",
+        "Soy un afortunado de haber podido vivir parte de ese camino a tu lado."
       ]
     },
 
     {
       tipo: "lista",
-      kicker: "Lo que veo",
+      kicker: "Aunque no te lo diga",
       titulo: "Lo que admiro\nde ti",
+      intro: "Hay un montón de cosas que admiro de ti, y que ojalá ser como tú.",
       items: [
-        "«PENDIENTE — y aquí la regla difícil: que ninguna frase te incluya a ti.»",
-        "«No vale \"me haces mejor\". Vale \"eres incapaz de dejar a nadie atrás\".»",
-        "«Lo valiente que eres cuando…»",
-        "«Lo bien que se te da…»",
-        "«La cabezonería con la que…»",
-        "«Lo que haces por los tuyos sin que nadie te lo pida»"
+        "Esa valentía de decir lo que piensas en todo momento",
+        "Esa capacidad de seguir adelante pese a los dolores y el sufrimiento",
+        "Todo lo que haces por los demás sin pedir nunca nada a cambio",
+        "«MÍA: que te has construido tu sitio tú sola, sin que nadie te lo regalara»",
+        "«MÍA: que no te conformas con lo primero que te dicen»",
+        "«MÍA: lo bien que sostienes a la gente que quieres cuando se les cae todo»"
       ]
     },
 
@@ -125,10 +131,13 @@ const HISTORIA = {
       tipo: "lista",
       kicker: "Y además",
       titulo: "Lo graciosa\nque eres",
+      intro: "Me encanta esa risa que te sale cuando ya no puedes más.",
       items: [
-        "«PENDIENTE — cosas concretas: frases que dice, caras que pone, cómo se ríe.»",
-        "«Lo que dice siempre cuando…»",
-        "«Cómo se ríe de sus propios chistes antes de contarlos»"
+        "Esa risa que sé que para alguna gente parecerá un cerdo en un matadero, pero que a mí me encanta",
+        "Cómo tú sola ya te estás riendo de un vídeo antes de enseñármelo",
+        "Esas tonterías y esas bromas en los mejores momentos",
+        "Cómo eres capaz de estar atenta al más mínimo chisme de quien sea, para cotillearlo luego",
+        "Las caras que intentas poner cuando algo te da risa pero quieres estar seria"
       ]
     },
 
@@ -140,24 +149,28 @@ const HISTORIA = {
 
     /* ===================================================================
        SEGUNDO ACTO — NOSOTROS
-       Aquí sí: el 8 de febrero, los viajes, el tatuaje.
        =================================================================== */
 
     {
       tipo: "texto",
-      kicker: "Y entonces",
-      titulo: "Cómo era esto\nantes de ti",
+      kicker: "Cómo empezó",
+      titulo: "Un tweet tuyo\ny yo de pesado",
       cuerpo: [
-        "«PENDIENTE — cómo era tu vida antes del 8 de febrero de 2021. No hace falta que sea triste, solo más pequeña.»"
+        "Y todo esto empezó por un tweet tuyo y por ser yo un pesado. Quién lo diría.",
+        "No hace falta contar la misma historia mil veces. Si fuera una coincidencia romántica de la vida, algo divertido, puede que sí. Pero simplemente fuimos dos personas destinadas a conectar y a estar juntas para siempre.",
+        "Un chispazo que desde el momento uno en el que hablamos ya se notaba.",
+        "«MÍA: no hubo señales ni casualidades que contar. Hubo dos personas hablando a deshora y la sensación rarísima de estar llegando tarde a algo que ya era nuestro.»"
       ]
     },
 
     {
       tipo: "texto",
-      kicker: "8 de febrero de 2021",
-      titulo: "El día que\nempezó todo",
+      kicker: "Y entonces",
+      titulo: "«Por qué no quedo\ncon el pesao este»",
       cuerpo: [
-        "«PENDIENTE — ese día con detalle. Dónde estabais, qué hora era, qué llevaba puesto, qué dijo ella, qué pensaste tú.»"
+        "Luego vino ese día en el que, ya que estabas en Granada, dijiste: y por qué no quedo con el pesao este.",
+        "Y ahí iba yo, súper nervioso, a encontrarte tan guapa. Con esa sonrisa. Con esa mirada.",
+        "Todo para que luego me pidieras un bizum y te rieras de que me llamo Jose Daniel."
       ]
     },
 
@@ -177,6 +190,18 @@ const HISTORIA = {
     },
 
     {
+      tipo: "texto",
+      kicker: "Y mientras tanto",
+      titulo: "Lo que me\nhas cambiado",
+      cuerpo: [
+        "Antes de todo esto nunca me hubiera imaginado que una persona podría cambiarme tanto la vida.",
+        "Me has hecho mejor en todo. Sobre todo a saber peinarme: solo hay que ver fotos de cuando nos conocimos.",
+        "A escuchar más. Sigo intentándolo, aunque esté sordo.",
+        "Y a aprender de mis errores. Aunque vuelva a caer en alguno, te prometo que cada vez aprendo más y soy mejor."
+      ]
+    },
+
+    {
       tipo: "lista",
       kicker: "Contigo, todo por primera vez",
       titulo: "Fuiste mi primera vez\nen muchas cosas",
@@ -187,12 +212,8 @@ const HISTORIA = {
         "Mi primer «¿cómo está nuestra gatilla?»",
         "Mi primera paz en medio del caos",
         "Mi primer lugar seguro"
-      ]
-    },
-
-    {
-      tipo: "cita",
-      texto: "Y la que me hizo sentir que el amor es paz, es tranquilidad, es hogar y es felicidad."
+      ],
+      cierre: "Y la que me hizo sentir que el amor es paz, es tranquilidad, es hogar y es felicidad."
     },
 
     {
@@ -207,8 +228,15 @@ const HISTORIA = {
       kicker: "Nueve sitios",
       titulo: "Dónde hemos\nsido felices",
       items: [
-        "Portugal", "Canarias", "Ámsterdam", "Madrid", "Barcelona",
-        "Benidorm", "Murcia", "Almería", "Irlanda"
+        { texto: "Portugal",     nota: "aunque tuve una pesadilla que espero no repetir nunca" },
+        { texto: "Fuerteventura", nota: "esos caminos estrechos con el coche y esas playas únicas" },
+        { texto: "Ámsterdam",    nota: "paseando por unos canales preciosos con la persona más preciosa del mundo a mi lado" },
+        { texto: "Madrid",       nota: "ya sea para un concierto inolvidable o para algún partido de fútbol" },
+        { texto: "Barcelona",    nota: "por circunstancias de la vida, pero al final siempre juntos" },
+        { texto: "Benidorm",     nota: "nada más que viendo guiris" },
+        { texto: "Murcia",       nota: "¿existe?" },
+        { texto: "Almería",      nota: "con ese miedo que pasé en el control de la policía" },
+        { texto: "Irlanda",      nota: "donde no vimos llover mucho, pero sí encontramos unos paisajes únicos" }
       ]
     },
 
@@ -226,7 +254,7 @@ const HISTORIA = {
       titulo: "¿Por qué será que\nhoy no me puedo dormir?",
       src: "img/minecraft.png",
       alt: "Pantalla de Minecraft: esperando a que otros se vayan a dormir",
-      pie: "«MÍA, cámbiala si quieres: en Minecraft la noche no pasa hasta que todos se duermen. Resulta que en mi cama funciona igual.»"
+      pie: "Parece que me ocurre igual que en el juego: hasta que no dormimos los dos, no puedo dormir."
     },
 
     {
@@ -243,14 +271,21 @@ const HISTORIA = {
       tipo: "lista",
       kicker: "Y aun así",
       titulo: "Empezar\notra vez",
-      items: ["Empezar otra vez", "Confiar otra vez", "Soñar otra vez"]
+      items: ["Empezar otra vez", "Confiar otra vez", "Soñar otra vez"],
+      cierre: "«MÍA: nadie te cuenta que lo difícil no es enamorarse. Es volver a hacerlo de la misma persona. Otra vez, y otra, y otra.»"
     },
 
     {
-      tipo: "texto",
-      cuerpo: [
-        "«MÍA, cámbiala si quieres: nadie te cuenta que lo difícil no es enamorarse. Es volver a hacerlo de la misma persona. Otra vez, y otra, y otra.»"
-      ]
+      tipo: "lista",
+      kicker: "Y sin embargo",
+      titulo: "No te digo\nte quiero, pero…",
+      intro: "Sé que puede que haya días en los que no te diga «te quiero» tanto como realmente lo siento.",
+      items: [
+        "Pero siempre me acuerdo de tus historias, de cómo te gusta el café, de tus gustos a la hora de comer y de que no soportas oír a la gente masticar",
+        "No te digo te quiero, pero sé cuál es tu lado de la cama, y si veo algo que te gusta pienso en ti",
+        "No te digo te quiero, pero en cada canción de una historia bonita imagino que somos tú y yo"
+      ],
+      cierre: "Y puede que ese sea mi problema: que quiero quedarme contigo para toda la vida y no soy capaz de expresarlo correctamente."
     },
 
     {
@@ -291,12 +326,22 @@ const HISTORIA = {
     },
 
     {
+      tipo: "texto",
+      kicker: "Y si te quedas con una cosa",
+      titulo: "Los dos estamos\nenamorados de ti",
+      cuerpo: [
+        "Solo quiero que sepas que los dos estamos enamorados de ti.",
+        "Yo, que te amo con todo mi corazón. Y ese niño pequeño que tiene todo lo que siempre había soñado."
+      ]
+    },
+
+    {
       tipo: "sobre",
       kicker: "Y por último",
       titulo: "Te he escrito\nuna carta",
       sello: "Ábreme",
       parrafos: [
-        "«PENDIENTE — la carta. Escríbela de una sentada, sin corregirte, como si se la estuvieras diciendo a la cara.»",
+        "«PENDIENTE — la carta. Es lo único que queda. Escríbela de una sentada, sin corregirte, como si se la estuvieras diciendo a la cara.»",
         "«Tres o cuatro párrafos van perfectos. Que se lea despacio.»"
       ],
       cierre: "«PENDIENTE — la última frase, la que más pese.»"
