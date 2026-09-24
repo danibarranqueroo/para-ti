@@ -89,7 +89,7 @@ const HISTORIA = {
       tipo: "fotos",
       estilo: "polaroid",
       fotos: ["img/nina-1.jpg", "img/nina-2.jpg", "img/nina-3.jpg", "img/nina-4.jpg"],
-      pie: "«PENDIENTE — pídele a su madre 4 fotos de ella de pequeña.»"
+      pie: "Tu madre guarda estas fotos como si fueran suyas.\nY en parte lo son."
     },
 
     {
@@ -111,7 +111,7 @@ const HISTORIA = {
         "Soy un afortunado de haber podido vivir parte de ese camino a tu lado."
       ],
       foto: "img/graduacion.jpg",
-      pieFoto: "«PENDIENTE — pie de la foto de la graduación.»"
+      pieFoto: "Grado en Economía. Promoción 2019–2023.\nTodos esos autobuses llevaban aquí."
     },
 
     {
@@ -142,13 +142,13 @@ const HISTORIA = {
         "Las caras que intentas poner cuando algo te da risa pero quieres estar seria"
       ],
       foto: "img/riendose.jpg",
-      pieFoto: "«PENDIENTE — pie de la foto riéndose o haciendo el tonto.»"
+      pieFoto: "Aquí, por ejemplo. Muerta de frío, envuelta en una toalla,\nriéndote de ti misma antes que nadie."
     },
 
     {
       tipo: "foto",
       src: "img/ella-1.jpg",
-      pie: "«PENDIENTE — una foto de ella sola, que le guste a ella.»"
+      pie: "Tú. Sin más."
     },
 
     /* ===================================================================
@@ -190,7 +190,7 @@ const HISTORIA = {
     {
       tipo: "foto",
       src: "img/nosotros-inicio.jpg",
-      pie: "«PENDIENTE — pie de foto.»"
+      pie: "Filtro de mariposas y morritos.\nAsí de serios empezamos."
     },
 
     {
@@ -219,7 +219,7 @@ const HISTORIA = {
       ],
       cierre: "Y la que me hizo sentir que el amor es paz, es tranquilidad, es hogar y es felicidad.",
       foto: "img/gata.jpg",
-      pieFoto: "«PENDIENTE — pie de la foto con la gatilla.»"
+      pieFoto: "Y ella, que también te eligió."
     },
 
     {
@@ -251,7 +251,7 @@ const HISTORIA = {
       kicker: "El álbum",
       titulo: "Trocitos",
       fotos: ["img/viaje-1.jpg", "img/viaje-2.jpg", "img/viaje-3.jpg", "img/viaje-4.jpg"],
-      pie: "«PENDIENTE — una frase que resuma todas estas fotos juntas.»"
+      pie: "Cada una es un sitio distinto.\nY en todas pone lo mismo."
     },
 
     {
@@ -266,7 +266,7 @@ const HISTORIA = {
     {
       tipo: "foto",
       src: "img/durmiendo.jpg",
-      pie: "«PENDIENTE — pie de la foto de los dos durmiendo.»"
+      pie: "Lo dicho. En un tren cualquiera, a media tarde,\nen cuanto te dormiste tú."
     },
 
     {
@@ -304,7 +304,7 @@ const HISTORIA = {
     {
       tipo: "foto",
       src: "img/beso.jpg",
-      pie: "«PENDIENTE — pie de la foto del beso.»"
+      pie: "Y en cada versión de la realidad, esto."
     },
 
     {
@@ -320,7 +320,7 @@ const HISTORIA = {
     {
       tipo: "foto",
       src: "img/nosotros-ahora.jpg",
-      pie: "«PENDIENTE — pie de la foto de los dos ahora.»"
+      pie: "Cinco años después, seguimos haciéndonos fotos\nen el ascensor antes de salir."
     },
 
     {
