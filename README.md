@@ -35,6 +35,31 @@ Abre en el iPhone `http://192.168.1.42:8000` (con tu IP).
 
 ---
 
+## Las 23 fotos y dónde va cada una
+
+Guárdalas en `img/originales/` **con estos nombres exactos** y ejecuta
+`bash tools/optimizar-fotos.sh`. El script respeta el nombre, así que cada una
+cae sola en su sitio. El formato da igual (HEIC del iPhone incluido).
+
+| Archivo | Dónde sale |
+|---|---|
+| `portada.jpg` | Fondo de la portada (opcional) |
+| `nina-1` … `nina-4.jpg` | Su infancia, en marco de foto antigua |
+| `graduacion.jpg` | Dentro del capítulo de la universidad |
+| `riendose.jpg` | Dentro de «Lo graciosa que eres» |
+| `ella-1.jpg` | Una de ella sola, cerrando el primer acto |
+| `nosotros-inicio.jpg` | Vuestros principios, tras el mapa del cielo |
+| `gata.jpg` | Dentro de «Fuiste mi primera vez en muchas cosas» |
+| `viaje-1` … `viaje-4.jpg` | El mosaico «Trocitos», tras los nueve sitios |
+| `durmiendo.jpg` | Justo después del Minecraft |
+| `beso.jpg` | Justo antes del tatuaje |
+| `ella-2.jpg` | Antes de «Amarte toda una vida» |
+| `futuro-casa`, `futuro-viaje`, `futuro-boda`, `futuro-bebe`, `futuro-viejitos.jpg` | Los cinco momentos del futuro |
+| `dani-nino.jpg` | Con «ese niño pequeño», en marco antiguo |
+
+Las que falten no rompen nada: la foto se queda como un hueco discreto y los
+marcos del futuro vuelven a salir vacíos con su interrogante.
+
 ## Añadir fotos
 
 1. Copia las fotos al Finder en `img/originales/` (da igual si son HEIC del iPhone).

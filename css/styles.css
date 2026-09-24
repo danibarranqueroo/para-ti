@@ -1192,3 +1192,8 @@ body.is-locked .music-toggle { visibility: hidden; }
   color: var(--accent);
   max-width: 34ch;
 }
+
+/* Una foto dentro de un capítulo de texto o de lista */
+.photo--dentro { margin-top: 2rem; }
+.photo--dentro .photo__frame { max-width: 300px; margin-inline: auto; }
+.photo--dentro .photo__caption { text-align: center; }

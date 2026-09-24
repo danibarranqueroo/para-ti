@@ -64,6 +64,15 @@
     return frame;
   }
 
+  // Una foto dentro de un capítulo de texto o de lista
+  function fotoDentro(c) {
+    if (!c.foto) return null;
+    var fig = el('<figure class="photo photo--dentro" data-reveal></figure>');
+    fig.appendChild(photoFrame(c.foto, "4 / 5", c.estilo));
+    if (c.pieFoto) fig.appendChild(el('<figcaption class="photo__caption">' + txt(c.pieFoto) + "</figcaption>"));
+    return fig;
+  }
+
   function section(cls) {
     return el('<section class="chapter ' + cls + '"><div class="chapter__inner"></div></section>');
   }
@@ -108,6 +117,8 @@
       (c.cuerpo || []).forEach(function (p) {
         inner.appendChild(el('<p class="body" data-reveal>' + txt(p) + "</p>"));
       });
+      var f = fotoDentro(c);
+      if (f) inner.appendChild(f);
       return s;
     },
 
@@ -192,6 +203,8 @@
       });
       inner.appendChild(ul);
       if (c.cierre) inner.appendChild(el('<p class="list__cierre" data-reveal>' + txt(c.cierre) + "</p>"));
+      var fl = fotoDentro(c);
+      if (fl) inner.appendChild(fl);
       return s;
     },
 
@@ -254,8 +267,15 @@
         if (m.src) {
           // El día que exista la foto, basta con ponerla aquí
           var marco = el('<div class="futuro__marco futuro__marco--lleno"></div>');
-          marco.appendChild(el('<img src="' + txt(conVersion(m.src)) +
-                               '" alt="" loading="lazy" decoding="async">'));
+          var im = el('<img src="' + txt(conVersion(m.src)) +
+                      '" alt="" loading="lazy" decoding="async">');
+          // Si la imagen todavía no existe, el marco vuelve a quedarse vacío
+          im.addEventListener("error", function () {
+            marco.classList.remove("futuro__marco--lleno");
+            marco.appendChild(el("<span>?</span>"));
+            im.remove();
+          });
+          marco.appendChild(im);
           item.appendChild(marco);
         } else {
           item.appendChild(el('<div class="futuro__marco"><span>?</span></div>'));

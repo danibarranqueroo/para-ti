@@ -109,7 +109,9 @@ const HISTORIA = {
         "Solo tú sabes la cantidad de autobuses que has cogido. El esfuerzo de estar allí día a día, las horas estudiando, los llantos y las alegrías.",
         "Pero lo más importante es que todo el mundo que te conoce está súper orgulloso de ti. Yo el que más. Porque siempre has dado más de lo que podías. Porque aunque te costara, seguías intentándolo. Y porque lo has logrado.",
         "Soy un afortunado de haber podido vivir parte de ese camino a tu lado."
-      ]
+      ],
+      foto: "img/graduacion.jpg",
+      pieFoto: "«PENDIENTE — pie de la foto de la graduación.»"
     },
 
     {
@@ -138,12 +140,14 @@ const HISTORIA = {
         "Esas tonterías y esas bromas en los mejores momentos",
         "Cómo eres capaz de estar atenta al más mínimo chisme de quien sea, para cotillearlo luego",
         "Las caras que intentas poner cuando algo te da risa pero quieres estar seria"
-      ]
+      ],
+      foto: "img/riendose.jpg",
+      pieFoto: "«PENDIENTE — pie de la foto riéndose o haciendo el tonto.»"
     },
 
     {
       tipo: "foto",
-      src: "img/ella.jpg",
+      src: "img/ella-1.jpg",
       pie: "«PENDIENTE — una foto de ella sola, que le guste a ella.»"
     },
 
@@ -185,7 +189,7 @@ const HISTORIA = {
 
     {
       tipo: "foto",
-      src: "img/01.jpg",
+      src: "img/nosotros-inicio.jpg",
       pie: "«PENDIENTE — pie de foto.»"
     },
 
@@ -213,7 +217,9 @@ const HISTORIA = {
         "Mi primera paz en medio del caos",
         "Mi primer lugar seguro"
       ],
-      cierre: "Y la que me hizo sentir que el amor es paz, es tranquilidad, es hogar y es felicidad."
+      cierre: "Y la que me hizo sentir que el amor es paz, es tranquilidad, es hogar y es felicidad.",
+      foto: "img/gata.jpg",
+      pieFoto: "«PENDIENTE — pie de la foto con la gatilla.»"
     },
 
     {
@@ -244,7 +250,7 @@ const HISTORIA = {
       tipo: "fotos",
       kicker: "El álbum",
       titulo: "Trocitos",
-      fotos: ["img/02.jpg", "img/03.jpg", "img/04.jpg", "img/05.jpg"],
+      fotos: ["img/viaje-1.jpg", "img/viaje-2.jpg", "img/viaje-3.jpg", "img/viaje-4.jpg"],
       pie: "«PENDIENTE — una frase que resuma todas estas fotos juntas.»"
     },
 
@@ -255,6 +261,12 @@ const HISTORIA = {
       src: "img/minecraft.png",
       alt: "Pantalla de Minecraft: esperando a que otros se vayan a dormir",
       pie: "Parece que me ocurre igual que en el juego: hasta que no dormimos los dos, no puedo dormir."
+    },
+
+    {
+      tipo: "foto",
+      src: "img/durmiendo.jpg",
+      pie: "«PENDIENTE — pie de la foto de los dos durmiendo.»"
     },
 
     {
@@ -289,6 +301,12 @@ const HISTORIA = {
     },
 
     {
+      tipo: "foto",
+      src: "img/beso.jpg",
+      pie: "«PENDIENTE — pie de la foto del beso.»"
+    },
+
+    {
       tipo: "cita",
       inicial: "A",
       texto: "Te elegiría siempre a ti. En cada vida, en cien mundos, en cada versión de la realidad.\n\nPorque aunque lleve tu inicial tatuada, es en mi corazón donde estás tatuada tú. Y es ahí donde vas a quedarte para siempre.\n\nPorque te elegiría una y mil veces."
@@ -300,7 +318,7 @@ const HISTORIA = {
 
     {
       tipo: "foto",
-      src: "img/06.jpg",
+      src: "img/ella-2.jpg",
       pie: "«PENDIENTE — una foto de ahora, de las recientes.»"
     },
 
@@ -316,13 +334,13 @@ const HISTORIA = {
       kicker: "Lo que nos queda",
       titulo: "Las fotos que\ntodavía no hemos hecho",
       momentos: [
-        { texto: "La casa nueva" },
-        { texto: "El próximo viaje" },
-        { texto: "La boda" },
-        { texto: "Un bebé" },
-        { texto: "Nosotros, viejitos" }
+        { texto: "La casa nueva",      src: "img/futuro-casa.jpg" },
+        { texto: "El próximo viaje",   src: "img/futuro-viaje.jpg" },
+        { texto: "La boda",            src: "img/futuro-boda.jpg" },
+        { texto: "Un bebé",            src: "img/futuro-bebe.jpg" },
+        { texto: "Nosotros, viejitos", src: "img/futuro-viejitos.jpg" }
       ],
-      pie: "Estos marcos están vacíos a propósito. Los vamos a ir llenando."
+      pie: "Todavía no han pasado. Pero ya me las imagino así."
     },
 
     {
@@ -332,7 +350,10 @@ const HISTORIA = {
       cuerpo: [
         "Solo quiero que sepas que los dos estamos enamorados de ti.",
         "Yo, que te amo con todo mi corazón. Y ese niño pequeño que tiene todo lo que siempre había soñado."
-      ]
+      ],
+      foto: "img/dani-nino.jpg",
+      estilo: "polaroid",
+      pieFoto: "Ese de ahí"
     },
 
     {
