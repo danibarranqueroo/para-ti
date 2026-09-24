@@ -359,18 +359,6 @@ const HISTORIA = {
     },
 
     {
-      tipo: "sobre",
-      kicker: "Y por último",
-      titulo: "Te he escrito\nuna carta",
-      sello: "Ábreme",
-      parrafos: [
-        "«PENDIENTE — la carta. Es lo único que queda. Escríbela de una sentada, sin corregirte, como si se la estuvieras diciendo a la cara.»",
-        "«Tres o cuatro párrafos van perfectos. Que se lea despacio.»"
-      ],
-      cierre: "«PENDIENTE — la última frase, la que más pese.»"
-    },
-
-    {
       tipo: "libreria",
       kicker: "Ah, y una cosa más",
       titulo: "Tu estantería",
@@ -382,6 +370,22 @@ const HISTORIA = {
         { lomo: "Que viaje bien",  que: "Una funda para el Kindle" },
         { lomo: "Para ponerte guapa", que: "Ropa",             nota: "la que tú quieras: eliges tú" }
       ]
+    },
+
+    {
+      tipo: "sobre",
+      kicker: "Y por último",
+      titulo: "Te he escrito\nuna carta",
+      sello: "Léeme",
+      parrafos: [
+        "Hoy es tu cumpleaños y no quiero estropeártelo. Pero llevo días queriendo decirte esto y no encuentro la forma, así que aquí va.",
+        "Te fallé. No debería haber hablado con él, y ahora lo veo tan claro que hasta duele: era tan fácil como estar ahí, a tu lado, ignorándolo. No hacía falta más.",
+        "Y lo peor no es eso. Lo peor es que te hizo sentir sola. Y no hay mayor decepción que sentirte sola en un momento importante teniendo al lado a quien debería ser el amor de tu vida.",
+        "Sé que decirte que no va a volver a pasar no vale nada. Yo también lo he pensado. Las palabras ahora mismo son lo más barato que tengo, y ya he gastado bastantes.",
+        "Si estos días me has notado lejos, no es indiferencia. Es que quiero que tengas todo el espacio que necesites para pensar, sin que yo esté encima. Pero te lo digo por si no se nota: me duele el alma tenerte al lado y no poder acercarme a ti.",
+        "No te pido que me digas nada hoy. Solo que sepas que sigo aquí, que sé perfectamente lo que tengo, y que estoy dispuesto a demostrártelo el tiempo que haga falta."
+      ],
+      cierre: "Y aunque hoy estemos así, sigo pensando cada palabra de todo lo que has leído antes."
     },
 
     {
