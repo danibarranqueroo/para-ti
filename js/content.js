@@ -251,7 +251,7 @@ const HISTORIA = {
       kicker: "El álbum",
       titulo: "Trocitos",
       fotos: ["img/viaje-1.jpg", "img/viaje-2.jpg", "img/viaje-3.jpg", "img/viaje-4.jpg"],
-      pie: "Cada una es un sitio distinto.\nY en todas pone lo mismo."
+      pie: "Completando el mapamundi poco a poco."
     },
 
     {
