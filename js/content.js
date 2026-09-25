@@ -89,8 +89,7 @@ const HISTORIA = {
     {
       tipo: "fotos",
       estilo: "polaroid",
-      fotos: ["img/nina-1.jpg", "img/nina-2.jpg", "img/nina-3.jpg", "img/nina-4.jpg"],
-      pie: "Tu madre guarda estas fotos como si fueran suyas.\nY en parte lo son."
+      fotos: ["img/nina-1.jpg", "img/nina-2.jpg", "img/nina-3.jpg", "img/nina-4.jpg"]
     },
 
     {
